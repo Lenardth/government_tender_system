@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tender Monitoring System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        <h1>Tender Monitoring & Verification System</h1>
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="tenders.html">Tenders</a>
+            <a href="investors.html">Investors</a>
+            <a href="government.html">Government</a>
+            <a href="news.html">News</a>
+            <a href="calculator.html">Calculator</a>
+            <div class="dropdown">
+                <button class="dropbtn">More ▼</button>
+                <div class="dropdown-content">
+                    <a href="documents.html">Download Tender Documents</a>
+                    <a href="scoring.html">Tender 10-Point Scoring System</a>
+                    <a href="verify.html">Verify Project Reports</a>
+                    <a href="status.html">Project Status Updates</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transparency in Public Tenders</h1>
+            <p>Empowering contractors, investors, and governments to collaborate efficiently.</p>
+            <button onclick="window.location.href='tenders.html'">Explore Tenders</button>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for tenders...">
+        <button onclick="searchTenders()">Search</button>
+    </div>
+
+    <!-- Filter System -->
+    <div class="filter-section">
+        <select id="categoryFilter">
+    <option value="all">All Categories</option>
+    <option value="construction">Construction</option>
+    <option value="it">IT Services</option>
+    <option value="healthcare">Healthcare</option>
+  </select>
+        <input type="number" id="budgetFilter" placeholder="Max Budget (R)">
+        <button onclick="filterTenders()">Apply Filters</button>
+    </div>
+
+    <!-- Real-Time News -->
+    <div class="news" id="news">
+        <h2>Latest News</h2>
+        <div id="newsContainer" class="news-container"></div>
+    </div>
+
+    <!-- Investment Opportunities -->
+    <div class="investments" id="investors">
+        <h2>Investment Opportunities</h2>
+        <div id="investmentContainer" class="investment-container"></div>
+    </div>
+
+    <!-- Blockchain Integration -->
+    <div class="blockchain">
+        <h2>Blockchain-Verified Tenders</h2>
+        <p>All tenders are verified and tracked using blockchain technology for transparency.</p>
+        <button onclick="window.location.href='blockchain.html'">View Blockchain</button>
+    </div>
+
+    <!-- Interactive Map -->
+    <div class="map-container">
+        <h2>Tender Locations</h2>
+        <div id="map" style="height: 400px; width: 100%;"></div>
+    </div>
+
+    <!-- Government Efficiency Dashboard -->
+    <div class="dashboard" id="government">
+        <h2>Government Efficiency Dashboard</h2>
+        <div class="dashboard-content">
+            <div class="metric">
+                <h3>Tenders Awarded</h3>
+                <p id="tendersAwarded">0</p>
+            </div>
+            <div class="metric">
+                <h3>Projects Completed</h3>
+                <p id="projectsCompleted">0</p>
+            </div>
+            <div class="metric">
+                <h3>Efficiency Score</h3>
+                <p id="efficiencyScore">0%</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gamification -->
+    <div class="gamification">
+        <h2>Earn Tokens</h2>
+        <p>Participate in tenders and contribute to the platform to earn tokens.</p>
+        <button onclick="claimTokens()">Claim Tokens</button>
+    </div>
+
+    <!-- Calculator Section -->
+    <div class="calculator">
+        <h2>Tender Cost Calculator</h2>
+        <p>Estimate the cost of your project before bidding.</p>
+        <input type="number" id="materialCost" placeholder="Material Cost (R)">
+        <input type="number" id="laborCost" placeholder="Labor Cost (R)">
+        <input type="number" id="overhead" placeholder="Overhead Costs (R)">
+        <button onclick="calculateTender()">Calculate Total</button>
+        <h3 id="totalCost">Total Cost: R0</h3>
+    </div>
+
+    <!-- Vision Section -->
+    <div class="vision">
+        <h2>Our Vision</h2>
+        <p>To create a transparent, efficient, and accountable tendering process in South Africa, ensuring the completion of public projects for economic growth and job creation.</p>
+        <img src="img/infrastructure.jpg" alt="Infrastructure Development" class="responsive-img">
+    </div>
+
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+        <h2>Discover South Africa</h2>
+        <div class="slideshow">
+            <img class="slide" src="img/pexels-jvdm-1524627.jpg" alt="Rhino">
+            <img class="slide" src="img/pexels-khanh-hoang-minh-2-77752098-19301629.jpg" alt="Community">
+            <img class="slide" src="img/pexels-magda-ehlers-pexels-3735461.jpg" alt="African Art">
+            <img class="slide" src="img/pexels-magda-ehlers-pexels-3814243.jpg" alt="Upside-down House">
+            <img class="slide" src="img/pexels-mikegles-30931569.jpg" alt="Cityscape">
+        </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-media">
+        <h2>Follow Us</h2>
+        <a href="#"><img src="img/facebook.png" alt="Facebook" class="social-icon"></a>
+        <a href="#"><img src="img/twitter.png" alt="Twitter" class="social-icon"></a>
+        <a href="#"><img src="img/linkedin.png" alt="LinkedIn" class="social-icon"></a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>© 2024 Tender Monitoring System | Designed for Transparency and Growth</p>
+            <div class="social-media">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        let slideIndex = 0;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+
+        function calculateTender() {
+            const materialCost = parseFloat(document.getElementById('materialCost').value) || 0;
+            const laborCost = parseFloat(document.getElementById('laborCost').value) || 0;
+            const overhead = parseFloat(document.getElementById('overhead').value) || 0;
+            const totalCost = materialCost + laborCost + overhead;
+            document.getElementById('totalCost').innerText = `Total Cost: R${totalCost.toFixed(2)}`;
+        }
+    </script>
+</body>
+
+</html>

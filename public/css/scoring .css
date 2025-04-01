@@ -1,0 +1,176 @@
+
+/* Scoring System Styles */
+
+.scoring-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Introduction */
+.scoring-intro p {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Overview Section */
+.scoring-overview {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.scoring-chart {
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+/* Evaluation Criteria */
+.scoring-criteria {
+  margin-bottom: 50px;
+}
+
+.criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.criteria-item {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.criteria-number {
+  width: 40px;
+  height: 40px;
+  background: #FFD700;
+  color: #004B87;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+}
+
+.criteria-details h3 {
+  margin: 0;
+  color: #004B87;
+}
+
+.criteria-details p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Calculator Section */
+.scoring-calculator {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.calculator-form {
+  background: #f1f1f1;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.form-row label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #004B87;
+}
+
+.form-row input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.calculator-form button {
+  background: #004B87;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+.calculator-form button:hover {
+  background: #002147;
+}
+
+.score-result {
+  margin-top: 20px;
+  padding: 20px;
+  background: #e9ecef;
+  border-radius: 10px;
+}
+
+.total-score {
+  font-size: 20px;
+  font-weight: bold;
+  color: #004B87;
+}
+
+.score-interpretation {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #333;
+}
+
+/* Tips Section */
+.scoring-tips {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.tips-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.tip-item {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tip-item h3 {
+  color: #004B87;
+  margin-bottom: 10px;
+}
+
+.tip-item p {
+  font-size: 14px;
+  color: #555;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenders - Tender Monitoring System</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        <h1>Tender Monitoring & Verification System</h1>
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="tenders.html">Tenders</a>
+            <a href="investors.html">Investors</a>
+            <a href="government.html">Government</a>
+            <a href="news.html">News</a>
+            <a href="calculator.html">Calculator</a>
+            <div class="dropdown">
+                <button class="dropbtn">More ▼</button>
+                <div class="dropdown-content">
+                    <a href="documents.html">Download Tender Documents</a>
+                    <a href="scoring.html">Tender 10-Point Scoring System</a>
+                    <a href="verify.html">Verify Project Reports</a>
+                    <a href="status.html">Project Status Updates</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tenders List -->
+    <div class="tenders-container">
+        <h1>Available Tenders</h1>
+        
+        <!-- Search and Filter -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for tenders...">
+            <button onclick="searchTenders()">Search</button>
+        </div>
+        
+        <div class="filter-section">
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="construction">Construction</option>
+                <option value="it">IT Services</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="energy">Energy</option>
+            </select>
+            <input type="number" id="budgetFilter" placeholder="Max Budget (R)">
+            <button onclick="filterTenders()">Apply Filters</button>
+        </div>
+        
+        <!-- Tenders List -->
+        <div id="tendersList" class="tenders-list">
+            <!-- Tenders will be loaded here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>© 2024 Tender Monitoring System | Designed for Transparency and Growth</p>
+            <div class="social-media">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load tenders
+            loadTenders();
+            displayTenders();
+        });
+
+        function displayTenders() {
+            const tendersListElement = document.getElementById('tendersList');
+            tendersListElement.innerHTML = '';
+            
+            tenders.forEach(tender => {
+                const tenderCard = document.createElement('div');
+                tenderCard.className = 'tender-card';
+                tenderCard.innerHTML = `
+                    <h3>${tender.title}</h3>
+                    <p><strong>Category:</strong> ${tender.category.charAt(0).toUpperCase() + tender.category.slice(1)}</p>
+                    <p><strong>Budget:</strong> R${tender.budget.toLocaleString()}</p>
+                    <p><strong>Deadline:</strong> ${tender.deadline}</p>
+                    <p><strong>Location:</strong> ${tender.location}</p>
+                    <p>${tender.description}</p>
+                    <button onclick="applyForTender(${tender.id})">Apply for Tender</button>
+                `;
+                tendersListElement.appendChild(tenderCard);
+            });
+        }
+
+        function applyForTender(id) {
+            alert(`You are applying for tender #${id}. In a real application, this would open an application form.`);
+        }
+    </script>
+</body>
+
+</html>

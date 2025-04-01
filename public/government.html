@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government - Tender Monitoring System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/government.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        <h1>Tender Monitoring & Verification System</h1>
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">Home</a>
+            <a href="tenders.html">Tenders</a>
+            <a href="investors.html">Investors</a>
+            <a href="government.html">Government</a>
+            <a href="news.html">News</a>
+            <a href="calculator.html">Calculator</a>
+            <div class="dropdown">
+                <button class="dropbtn">More ▼</button>
+                <div class="dropdown-content">
+                    <a href="documents.html">Download Tender Documents</a>
+                    <a href="scoring.html">Tender 10-Point Scoring System</a>
+                    <a href="verify.html">Verify Project Reports</a>
+                    <a href="status.html">Project Status Updates</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Government Content -->
+    <div class="government-container">
+        <h1>Government Dashboard</h1>
+        
+        <div class="gov-intro">
+            <p>Welcome to the Government Dashboard. This platform provides real-time insights into tender processes, project statuses, and efficiency metrics to enhance transparency and accountability in public procurement.</p>
+        </div>
+        
+        <!-- Dashboard -->
+        <div class="dashboard" id="government">
+            <h2>Efficiency Dashboard</h2>
+            <div class="dashboard-content">
+                <div class="metric">
+                    <h3>Tenders Awarded</h3>
+                    <p id="tendersAwarded">0</p>
+                </div>
+                <div class="metric">
+                    <h3>Projects Completed</h3>
+                    <p id="projectsCompleted">0</p>
+                </div>
+                <div class="metric">
+                    <h3>Efficiency Score</h3>
+                    <p id="efficiencyScore">0%</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project Status -->
+        <div class="project-status">
+            <h2>Project Status Overview</h2>
+            <div class="status-chart">
+                <canvas id="statusChart" width="400" height="200"></canvas>
+            </div>
+            <div class="status-legend">
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #4CAF50;"></span>
+                    <span>Completed</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #2196F3;"></span>
+                    <span>In Progress</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #FFC107;"></span>
+                    <span>Delayed</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color" style="background-color: #F44336;"></span>
+                    <span>Cancelled</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Activity -->
+        <div class="recent-activity">
+            <h2>Recent Activity</h2>
+            <div class="activity-list" id="activityList">
+                <!-- Activity items will be loaded here by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Department Performance -->
+        <div class="department-performance">
+            <h2>Department Performance</h2>
+            <table class="performance-table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Projects</th>
+                        <th>On Time</th>
+                        <th>On Budget</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="departmentTable">
+                    <!-- Department data will be loaded here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Verification System -->
+        <div class="verification-system">
+            <h2>Blockchain Verification</h2>
+            <p>All tender processes are verified using blockchain technology, ensuring transparency and preventing fraud.</p>
+            <div class="verification-stats">
+                <div class="verification-stat">
+                    <h3>Verified Transactions</h3>
+                    <p id="verifiedTransactions">0</p>
+                </div>
+                <div class="verification-stat">
+                    <h3>Fraud Attempts Prevented</h3>
+                    <p id="fraudPrevented">0</p>
+                </div>
+            </div>
+            <button onclick="window.location.href='verify.html'">Verify a Transaction</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>© 2024 Tender Monitoring System | Designed for Transparency and Growth</p>
+            <div class="social-media">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update dashboard
+            updateDashboard();
+            
+            // Load activity data
+            loadActivityData();
+            
+            // Load department data
+            loadDepartmentData();
+            
+            // Initialize chart
+            initStatusChart();
+            
+            // Update verification stats
+            updateVerificationStats();
+        });
+
+        function loadActivityData() {
+            const activities = [
+                { date: '2025-03-30', action: 'Tender #2458 awarded to ABC Construction', department: 'Public Works' },
+                { date: '2025-03-29', action: 'Project #1872 completed ahead of schedule', department: 'Transport' },
+                { date: '2025-03-28', action: 'New tender published for healthcare equipment', department: 'Health' },
+                { date: '2025-03-27', action: 'Budget increase approved for Project #2134', department: 'Education' },
+                { date: '2025-03-26', action: 'Verification audit completed for 15 projects', department: 'Treasury' }
+            ];
+            
+            const activityList = document.getElementById('activityList');
+            activities.forEach(activity => {
+                const activityItem = document.createElement('div');
+                activityItem.className = 'activity-item';
+                activityItem.innerHTML = `
+                    <div class="activity-date">${activity.date}</div>
+                    <div class="activity-details">
+                        <p>${activity.action}</p>
+                        <span class="activity-department">${activity.department}</span>
+                    </div>
+                `;
+                activityList.appendChild(activityItem);
+            });
+        }
+
+        function loadDepartmentData() {
+            const departments = [
+                { name: 'Public Works', projects: 42, onTime: '85%', onBudget: '78%', rating: 4.2 },
+                { name: 'Transport', projects: 37, onTime: '92%', onBudget: '88%', rating: 4.5 },
+                { name: 'Health', projects: 29, onTime: '76%', onBudget: '82%', rating: 3.9 },
+                { name: 'Education', projects: 31, onTime: '81%', onBudget: '75%', rating: 4.0 },
+                { name: 'Energy', projects: 18, onTime: '89%', onBudget: '91%', rating: 4.7 }
+            ];
+            
+            const departmentTable = document.getElementById('departmentTable');
+            departments.forEach(dept => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${dept.name}</td>
+                    <td>${dept.projects}</td>
+                    <td>${dept.onTime}</td>
+                    <td>${dept.onBudget}</td>
+                    <td>${dept.rating}/5</td>
+                `;
+                departmentTable.appendChild(row);
+            });
+        }
+
+        function initStatusChart() {
+            const ctx = document.getElementById('statusChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'In Progress', 'Delayed', 'Cancelled'],
+                    datasets: [{
+                        data: [89, 45, 12, 3],
+                        backgroundColor: [
+                            '#4CAF50',
+                            '#2196F3',
+                            '#FFC107',
+                            '#F44336'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateVerificationStats() {
+            document.getElementById('verifiedTransactions').textContent = '1,457';
+            document.getElementById('fraudPrevented').textContent = '23';
+        }
+    </script>
+</body>
+
+</html>

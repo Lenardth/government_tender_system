@@ -1,0 +1,204 @@
+
+/* Government Dashboard Page Styles */
+
+.government-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gov-intro p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Dashboard Metrics */
+.dashboard-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.metric {
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.metric h3 {
+  margin-bottom: 10px;
+  color: #004B87;
+}
+
+.metric p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Project Status Section */
+.project-status {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.status-chart {
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.status-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+/* Recent Activity */
+.recent-activity {
+  margin-top: 40px;
+}
+
+.activity-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.activity-item {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.activity-date {
+  font-weight: bold;
+  color: #004B87;
+  width: 100px;
+  text-align: center;
+}
+
+.activity-details p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.activity-department {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Department Performance Table */
+.department-performance {
+  margin-top: 40px;
+  overflow-x: auto;
+}
+
+.performance-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.performance-table th,
+.performance-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.performance-table th {
+  background-color: #004B87;
+  color: white;
+}
+
+.performance-table td {
+  background-color: #fff;
+  font-size: 14px;
+}
+
+/* Blockchain Verification */
+.verification-system {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.verification-system p {
+  margin: 10px 0 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.verification-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.verification-stat {
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 220px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.verification-stat h3 {
+  color: #004B87;
+  margin-bottom: 10px;
+}
+
+.verification-stat p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+.verification-system button {
+  background: #004B87;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.verification-system button:hover {
+  background: #002147;
+}
