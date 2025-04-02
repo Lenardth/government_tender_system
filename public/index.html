@@ -23,6 +23,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tender Monitoring System</title>
+    <style>
+           /* Header Styles with Right-aligned Auth */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #004B87, #002147);
+            color: white;
+            padding: 15px 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .header-img {
+            width: 40px;
+            margin-right: 15px;
+        }
+
+        .header-title {
+            font-size: 1.5rem; /* Reduced from default h1 size */
+            margin: 0;
+        }
+
+        .auth-container {
+            display: flex;
+            gap: 20px; /* Increased gap between login/register */
+            align-items: center;
+            margin-left: auto; /* Pushes to far right */
+        }
+
+        .auth-links {
+            display: flex;
+            gap: 20px; /* Increased gap between links */
+        }
+
+        .auth-links a {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            font-size: 0.9rem; /* Reduced font size */
+        }
+
+        .auth-links a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        #themeToggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem; /* Slightly reduced */
+            cursor: pointer;
+            color: white;
+            padding: 0;
+            margin-left: 10px;
+        }
+    </style>
+    
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
@@ -30,8 +93,15 @@
 <body>
     <!-- Header -->
     <header>
-        <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        <a href="index.html" class="header-img-link">
+            <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        </a>
         <h1>Tender Monitoring & Verification System</h1>
+        <div class="auth-links">
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+        </div>
         <button id="themeToggle" onclick="toggleTheme()">🌙</button>
     </header>
 
@@ -191,6 +261,41 @@
     <div class="spinner" id="loadingSpinner"></div>
 
     <!-- Scripts -->
+    
+    <script>
+        function checkAuthState() {
+            const token = localStorage.getItem('token');
+            const authLinks = document.querySelector('.auth-links');
+            
+            if (token) {
+                try {
+                    const payload = JSON.parse(atob(token.split('.')[1]));
+                    authLinks.innerHTML = `
+                        <span>Welcome, ${payload.user.name}</span>
+                        <a href="#" onclick="logout()">Logout</a>
+                        ${payload.user.role === 'government' ? 
+                          '<a href="government.html">Dashboard</a>' : ''}
+                        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+                    `;
+                } catch (error) {
+                    console.error('Invalid token:', error);
+                    logout();
+                }
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = 'index.html';
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', checkAuthState);
+    </script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="js/script.js"></script>
 </body>

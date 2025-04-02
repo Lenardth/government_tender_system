@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Tender System</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Main stylesheet -->
+    <style>
+        /* Registration-specific Styles */
+        .auth-container {
+            max-width: 500px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .auth-title {
+            color: #004B87;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: #004B87;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border: 2px solid #004B87;
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .auth-button {
+            background: #004B87;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .auth-button:hover {
+            background: #002147;
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .auth-links a {
+            color: #004B87;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dark Mode */
+        .dark-mode .auth-container {
+            background: #2d2d2d;
+        }
+
+        .dark-mode .auth-title {
+            color: #FFD700;
+        }
+
+        .dark-mode .form-group label {
+            color: #FFD700;
+        }
+
+        .dark-mode .form-group input,
+        .dark-mode .form-group select {
+            background: #1a1a1a;
+            border-color: #FFD700;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header matching main site -->
+    <header>
+        <a href="index.html" class="header-img-link">
+            <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        </a>
+        <h1>Tender Monitoring & Verification System</h1>
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <div class="auth-container">
+        <h2 class="auth-title">Create Account</h2>
+        <form class="auth-form" id="registrationForm" onsubmit="handleRegistration(event)">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password (min 8 characters):</label>
+                <input type="password" id="password" minlength="8" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Account Type:</label>
+                <select id="role" required>
+                    <option value="contractor">Contractor</option>
+                    <option value="investor">Investor</option>
+                    <option value="government">Government Official</option>
+                </select>
+            </div>
+            <button type="submit" class="auth-button">Register</button>
+        </form>
+        <div class="auth-links">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Enhanced Registration Handler
+        async function handleRegistration(event) {
+            event.preventDefault();
+            showLoading();
+
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value,
+                        role: document.getElementById('role').value
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    alert('Registration successful! Please login.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert(`Registration failed: ${data.message || 'Please check your information'}`);
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('Registration failed. Please try again.');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Theme Toggle from main site
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        // Initialize theme
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
+</body>
+</html>

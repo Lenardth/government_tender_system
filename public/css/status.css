@@ -215,3 +215,35 @@
 .subscription-form button:hover {
   background-color: #002147;
 }
+/* Project Status Map */
+.status-map-container {
+  margin: 40px auto; /* Center horizontally */
+  width: 90%; /* Take up 90% of parent width */
+  max-width: 800px; /* Maximum width */
+  height: 400px; /* Fixed height */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border: 1px solid #ddd;
+  position: relative; /* For absolute positioning of child elements */
+}
+
+/* Map element itself */
+#statusMap {
+  height: 100%;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .status-map-container {
+    width: 95%; /* Slightly more width on mobile */
+    height: 350px; /* Slightly shorter on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .status-map-container {
+    height: 300px; /* Even shorter on very small screens */
+  }
+}
