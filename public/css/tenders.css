@@ -1,16 +1,39 @@
+/* tender.css - Styles for Tenders Page */
 
-/* Tenders Page */
-
+/* Main Container */
 .tenders-container {
   max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
 .tenders-container h1 {
   text-align: center;
   color: #004B87;
   margin-bottom: 30px;
+}
+
+/* Table of Contents */
+.toc {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.toc h2 {
+  color: #004B87;
+  margin-top: 0;
+}
+
+.toc ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.toc li {
+  margin-bottom: 8px;
 }
 
 /* Search and Filter Section */
@@ -25,6 +48,7 @@
   width: 300px;
   border: 1px solid #ccc;
   border-radius: 5px 0 0 5px;
+  font-size: 14px;
 }
 
 .search-bar button {
@@ -34,6 +58,7 @@
   border: none;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .search-bar button:hover {
@@ -45,6 +70,7 @@
   justify-content: center;
   gap: 10px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .filter-section select,
@@ -52,6 +78,8 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  min-width: 150px;
+  font-size: 14px;
 }
 
 .filter-section button {
@@ -61,18 +89,30 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .filter-section button:hover {
   background: #e6c200;
 }
 
-/* Tenders List */
+/* tender.css - Fixed alignment for last row */
+
+/* Main Container */
+.tenders-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Tenders List - Fixed alignment */
 .tenders-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
+  justify-content: flex-start; /* Changed from center to fix alignment */
 }
 
 .tender-card {
@@ -80,30 +120,53 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   padding: 20px;
-  width: 320px;
-  text-align: left;
+  width: calc(33.333% - 14px); /* 3 cards per row accounting for gap */
+  display: flex;
+  flex-direction: column;
+  min-height: 300px; /* Set minimum height for consistency */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
+/* Media Queries for Responsive Layout */
+@media (max-width: 1024px) {
+  .tender-card {
+      width: calc(50% - 10px); /* 2 cards per row on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .tender-card {
+      width: 100%; /* 1 card per row on mobile */
+  }
+}
+
+/* Rest of your existing styles remain the same */
 .tender-card h3 {
   margin-top: 0;
   color: #004B87;
+  font-size: 18px;
 }
 
-.tender-card p {
-  font-size: 14px;
-  margin: 6px 0;
+.tender-card .card-content {
+  flex: 1;
 }
 
 .tender-card button {
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 10px 20px;
   background: #004B87;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  width: 100%;
 }
-
-.tender-card button:hover {
-  background: #002147;
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  color: #666;
+  font-size: 14px;
+  border-top: 1px solid #eee;
 }

@@ -1,6 +1,4 @@
-
 /* Investors Page Styles */
-
 .investors-container {
   max-width: 1200px;
   margin: 40px auto;
@@ -17,7 +15,7 @@
   text-align: center;
 }
 
-/* Investment Cards */
+/* Investment Cards - Updated for button alignment */
 .investments-list {
   display: flex;
   flex-wrap: wrap;
@@ -33,7 +31,9 @@
   width: 100%;
   max-width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .investment-card h3 {
@@ -44,7 +44,11 @@
 .investment-card p {
   font-size: 14px;
   color: #555;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.investment-card .card-content {
+  flex: 1;
 }
 
 .investment-card button {
@@ -55,6 +59,8 @@
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
+  width: 100%;
+  margin-top: auto;
 }
 
 .investment-card button:hover {
