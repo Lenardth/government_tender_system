@@ -562,3 +562,17 @@ nav {
     width: 100%;
   }
 }
+.slide {
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  display: none;
+  margin: auto;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.show {
+  display: block;
+  opacity: 1;
+}
