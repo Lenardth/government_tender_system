@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA Integrated Procurement Integrity System</title>
+    <link rel="stylesheet" href="css/anticorruption.css">
+    
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="system-header">
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Flag_of_South_Africa.svg/1200px-Flag_of_South_Africa.svg.png" alt="SA Government Logo" class="logo-img">
+            <h1>Integrated Procurement Integrity System</h1>
+        </div>
+        <div class="user-controls">
+            <button class="btn btn-outline">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                </svg>
+                Investigator Dashboard
+            </button>
+            <button class="btn btn-outline">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                </svg>
+                Logout
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <div class="nav-tab active">SIU Investigations</div>
+        <div class="nav-tab">NPA Prosecutions</div>
+        <div class="nav-tab">SARS Compliance</div>
+        <div class="nav-tab">FIC Reports</div>
+        <div class="nav-tab">Competition Cases</div>
+        <div class="nav-tab">CIDB Ratings</div>
+        <div class="nav-tab">Treasury Audits</div>
+    </nav>
+    
+    <!-- Main Content Grid -->
+    <div class="content-grid">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search cases...">
+            </div>
+            
+            <div class="filter-group">
+                <div class="filter-title">
+                    <span>Case Status</span>
+                </div>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" checked> Active (24)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Approved (56)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Rejected (12)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Critical (8)
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <div class="filter-title">
+                    <span>Departments</span>
+                </div>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" checked> Education (15)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" checked> Health (22)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Transport (8)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Public Works (14)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Municipalities (31)
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <div class="filter-title">
+                    <span>Risk Level</span>
+                </div>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox"> High (18)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" checked> Medium (42)
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox"> Low (32)
+                    </label>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <div class="filter-title">
+                    <span>Timeframe</span>
+                </div>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="radio" name="timeframe" checked> Last 30 days
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="timeframe"> Last quarter
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="timeframe"> Current FY
+                    </label>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Procurement Process Timeline -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2>Procurement Lifecycle Monitoring</h2>
+                    <div>
+                        <span class="status-badge status-critical">Critical Alert</span>
+                    </div>
+                </div>
+                
+                <div class="process-timeline">
+                    <!-- Step 1 -->
+                    <div class="process-step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h3>Planning</h3>
+                        </div>
+                        <p>Department identifies need and budget</p>
+                        <div class="blockchain-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm-.5 3h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5zM8 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                            </svg>
+                            TX: 0x8a3d... Verify
+                        </div>
+                        <div class="verification-details">
+                            <strong>Verified:</strong>
+                            <ul>
+                                <li>Budget approval</li>
+                                <li>Needs assessment</li>
+                                <li>BBBEE requirements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="process-step tendering">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h3>Tender Prep</h3>
+                        </div>
+                        <p>Drafting specifications</p>
+                        <div class="blockchain-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm-.5 3h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5zM8 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                            </svg>
+                            TX: 0x4f7b... Verify
+                        </div>
+                        <div class="verification-details">
+                            <strong>Verified:</strong>
+                            <ul>
+                                <li>Spec integrity</li>
+                                <li>No restrictive clauses</li>
+                                <li>Fair scoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="process-step tendering">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h3>Advertisement</h3>
+                        </div>
+                        <p>Published for 21+ days</p>
+                        <div class="blockchain-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm-.5 3h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5zM8 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                            </svg>
+                            TX: 0x2c9e... Verify
+                        </div>
+                        <div class="verification-details">
+                            <strong>Verified:</strong>
+                            <ul>
+                                <li>Publication timestamp</li>
+                                <li>Accessibility</li>
+                                <li>SME participation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="process-step evaluation">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <h3>Bid Submission</h3>
+                        </div>
+                        <p>Vendors submit proposals</p>
+                        <div class="blockchain-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm-.5 3h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5zM8 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                            </svg>
+                            TX: 0x5d1a... Verify
+                        </div>
+                        <div class="verification-details">
+                            <strong>Verified:</strong>
+                            <ul>
+                                <li>Submission time</li>
+                                <li>Document integrity</li>
+                                <li>Vendor credentials</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="process-step evaluation">
+                        <div class="step-header">
+                            <span class="step-number">5</span>
+                            <h3>Evaluation</h3>
+                        </div>
+                        <p>Committee assessment</p>
+                        <div class="blockchain-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm-.5 3h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5zM8 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                            </svg>
+                            TX: 0x7e4c... Verify
+                        </div>
+                        <div class="verification-details">
+                            <strong>Verified:</strong>
+                            <ul>
+                                <li>Evaluation criteria</li>
+                                <li>Committee signatures</li>
+                                <li>AI anomaly report</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 6 -->
+                    <div class="process-step award">
+                        <div class="step-header">
+                            <span class="step-number">6</span>
+                            <h3>Contract Award</h3>
+                        </div>
+                        <p>Successful bidder notified</p>
+                        <div class="blockchain-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm-.5 3h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5zM8 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                            </svg>
+                            TX: 0x9b2f... Verify
+                        </div>
+                        <div class="verification-details">
+                            <strong>Verified:</strong>
+                            <ul>
+                                <li>Approval chain</li>
+                                <li>Fairness certificate</li>
+                                <li>Public disclosure</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Verification System -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2>Integrated Verification System</h2>
+                    <button class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                        </svg>
+                        Run Full Audit
+                    </button>
+                </div>
+                
+                <p>Each procurement step triggers automatic checks across government databases:</p>
+                
+                <div class="verification-grid">
+                    <div class="verification-card">
+                        <h4>SARS Tax Check</h4>
+                        <p>Validates vendor tax compliance in real-time</p>
+                        <small>API: tax-status.verify.sars.gov.za</small>
+                    </div>
+                    
+                    <div class="verification-card">
+                        <h4>CIPC Ownership</h4>
+                        <p>Detects hidden relationships between bidders</p>
+                        <small>API: director-search.cipc.co.za</small>
+                    </div>
+                    
+                    <div class="verification-card">
+                        <h4>FIC Transaction</h4>
+                        <p>Monitors payments for suspicious activity</p>
+                        <small>Feed: fic-alerts.resbank.co.za</small>
+                    </div>
+                    
+                    <div class="verification-card">
+                        <h4>CIDB Rating</h4>
+                        <p>Verifies contractor grading and capacity</p>
+                        <small>DB: cidb-contractors.azure-api.net</small>
+                    </div>
+                    
+                    <div class="verification-card">
+                        <h4>National Treasury</h4>
+                        <p>Ensures budget availability and approvals</p>
+                        <small>System: efiling.treasury.gov.za</small>
+                    </div>
+                    
+                    <div class="verification-card">
+                        <h4>Competition Commission</h4>
+                        <p>Checks for anti-competitive history</p>
+                        <small>Registry: compcom-db.gov.za</small>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Case Details -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2>Case Details: #SIU-2023-0451</h2>
+                    <span class="status-badge status-critical">Critical Priority</span>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Tender Title:</div>
+                    <div class="detail-value">Limpopo School Construction Project (Phase 2)</div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Tender Number:</div>
+                    <div class="detail-value">EDU/LMP/2023/007</div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Value:</div>
+                    <div class="detail-value">R45,000,000.00</div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Issuing Department:</div>
+                    <div class="detail-value">
+                        Limpopo Department of Education
+                        <span class="entity-badge badge-treasury">Treasury Verified</span>
+                    </div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Primary Contractor:</div>
+                    <div class="detail-value">
+                        ABC Builders (Pty) Ltd
+                        <span class="entity-badge badge-sars">SARS: Non-Compliant</span>
+                        <span class="entity-badge badge-cidb">CIDB: 6CE</span>
+                    </div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Connected Entities:</div>
+                    <div class="detail-value">
+                        <span class="entity-badge badge-siu">XYZ Supplies CC</span>
+                        <span class="entity-badge badge-fic">LMP Construction</span>
+                        <span class="entity-badge badge-cpc">Fronting Alert</span>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">Investigation Timeline</h3>
+                <div class="timeline">
+                    <div class="timeline-item siu">
+                        <h4>SIU Case Opened</h4>
+                        <p>15 July 2023 - AI detected bid rigging pattern</p>
+                        <span class="blockchain-link">Blockchain TX: 0x3a7d9f2b5e8c1a4f6d9e0c2b3a8d7e6f5c4b3a2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9</span>
+                    </div>
+                    
+                    <div class="timeline-item sars">
+                        <h4>SARS Tax Compliance Check</h4>
+                        <p>16 July 2023 - Found unpaid taxes of R2.4m</p>
+                        <span class="blockchain-link">SARS Case #TAX-98765</span>
+                    </div>
+                    
+                    <div class="timeline-item fic">
+                        <h4>FIC Suspicious Transaction</h4>
+                        <p>17 July 2023 - Flagged payments to shell companies</p>
+                        <span class="blockchain-link">STR-54321 (Confidential)</span>
+                    </div>
+                    
+                    <div class="timeline-item cpc">
+                        <h4>Competition Commission Referral</h4>
+                        <p>18 July 2023 - Potential market division</p>
+                        <span class="blockchain-link">Case #CCP-12345</span>
+                    </div>
+                    
+                    <div class="timeline-item npa">
+                        <h4>NPA Asset Forfeiture</h4>
+                        <p>20 July 2023 - Frozen R12m in suspect accounts</p>
+                        <span class="blockchain-link">AFU Case #2023/456</span>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">Evidence Documentation</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Document</th>
+                            <th>Type</th>
+                            <th>Source</th>
+                            <th>Blockchain Hash</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tender Notice</td>
+                            <td>Original</td>
+                            <td>eTender Portal</td>
+                            <td>0x4a8b...</td>
+                            <td><span class="status-badge status-approved">Verified</span></td>
+                        </tr>
+                        <tr>
+                            <td>Bid Submission</td>
+                            <td>PDF</td>
+                            <td>ABC Builders</td>
+                            <td>0x7f2e...</td>
+                            <td><span class="status-badge status-critical">Anomalies</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tax Certificate</td>
+                            <td>SARS</td>
+                            <td>Auto API</td>
+                            <td>0x3d9a...</td>
+                            <td><span class="status-badge status-rejected">Non-Compliant</span></td>
+                        </tr>
+                        <tr>
+                            <td>Bank Transactions</td>
+                            <td>CSV</td>
+                            <td>FIC Report</td>
+                            <td>0x1b4c...</td>
+                            <td><span class="status-badge status-critical">Suspicious</span></td>
+                        </tr>
+                        <tr>
+                            <td>Evaluation Sheet</td>
+                            <td>Excel</td>
+                            <td>Committee</td>
+                            <td>0x6e2f...</td>
+                            <td><span class="status-badge status-pending">Review</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022z"/>
+                        </svg>
+                        Approve Case
+                    </button>
+                    <button class="btn btn-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                        Reject Case
+                    </button>
+                    <button class="btn btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                        </svg>
+                        Request More Info
+                    </button>
+                    <button class="btn btn-primary" style="margin-left: auto;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                        </svg>
+                        Export Case Package
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Blockchain Verification Modal -->
+    <div id="blockchainModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2>Blockchain Verification</h2>
+                <p>Validate evidence integrity on the decentralized ledger</p>
+            </div>
+            
+            <div id="verificationResult">
+                <div style="text-align: center; padding: 2rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#673AB7" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm-.5 3h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5zM8 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                    </svg>
+                    <h3 style="margin: 1rem 0; color: var(--blockchain);">Verifying Document on Blockchain</h3>
+                    <p>Querying decentralized network for transaction validation...</p>
+                </div>
+            </div>
+            
+            <div class="verification-card" style="margin-top: 1.5rem;">
+                <h4>Transaction Details</h4>
+                <div class="detail-row">
+                    <div class="detail-label">Blockchain:</div>
+                    <div class="detail-value">SA Government Chain (Mainnet)</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Transaction Hash:</div>
+                    <div class="detail-value" style="font-family: monospace;">0x3a7d9f2b5e8c1a4f6d9e0c2b3a8d7e6f5c4b3a2d1e0f9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Block Number:</div>
+                    <div class="detail-value">#142,857</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Timestamp:</div>
+                    <div class="detail-value">2023-07-15 14:22:36 UTC</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+                <button class="btn btn-primary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Blockchain verification simulation
+        document.querySelectorAll('.blockchain-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                const txHash = this.textContent.split(' ')[1];
+                openModal(txHash);
+            });
+        });
+        
+        function openModal(txHash) {
+            const modal = document.getElementById('blockchainModal');
+            modal.style.display = 'block';
+            
+            // Simulate verification process
+            setTimeout(() => {
+                document.getElementById('verificationResult').innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#4CAF50" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>
+                        <h3 style="margin: 1rem 0; color: #4CAF50;">Document Verified</h3>
+                        <p>This record has been confirmed by 14 nodes in the network</p>
+                        <div style="background: #f5f5f5; padding: 1rem; border-radius: 4px; margin-top: 1rem;">
+                            <p><strong>Immutable Proof:</strong> SHA-256 hash matches original submission</p>
+                            <p><strong>Signatures:</strong> 3/3 required department approvals verified</p>
+                            <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+                        </div>
+                    </div>
+                `;
+            }, 2000);
+        }
+        
+        function closeModal() {
+            document.getElementById('blockchainModal').style.display = 'none';
+            // Reset modal content
+            document.getElementById('verificationResult').innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#673AB7" viewBox="0 0 16 16">
+                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm-.5 3h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5zM8 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                    </svg>
+                    <h3 style="margin: 1rem 0; color: var(--blockchain);">Verifying Document on Blockchain</h3>
+                    <p>Querying decentralized network for transaction validation...</p>
+                </div>
+            `;
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('blockchainModal')) {
+                closeModal();
+            }
+        }
+        
+        // Tab switching functionality
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelector('.nav-tab.active').classList.remove('active');
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

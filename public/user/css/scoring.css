@@ -1,0 +1,234 @@
+/* Scoring System Styles */
+.scoring-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Chart Size Reduction */
+.scoring-chart {
+  max-width: 500px;
+  height: 250px !important;
+  margin: 15px auto;
+}
+
+/* Responsive Chart Container */
+@media (max-width: 600px) {
+  .scoring-chart {
+    max-width: 100%;
+    height: 200px !important;
+  }
+}
+
+/* Introduction */
+.scoring-intro p {
+  font-size: 15px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Overview Section */
+.scoring-overview {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.scoring-overview h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Evaluation Criteria */
+.scoring-criteria {
+  margin-bottom: 30px;
+}
+
+.criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.criteria-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  align-items: flex-start;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.criteria-number {
+  min-width: 32px;
+  height: 32px;
+  background: #FFD700;
+  color: #004B87;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-size: 16px;
+}
+
+.criteria-details h3 {
+  margin: 0 0 5px 0;
+  color: #004B87;
+  font-size: 1rem;
+}
+
+.criteria-details p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Calculator Section */
+.scoring-calculator {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.calculator-form {
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.form-row label {
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: #004B87;
+  font-size: 14px;
+}
+
+.form-row input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.calculator-form button {
+  background: #004B87;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.2s ease;
+}
+
+.calculator-form button:hover {
+  background: #002147;
+}
+
+.score-result {
+  margin-top: 15px;
+  padding: 15px;
+  background: #e9ecef;
+  border-radius: 8px;
+}
+
+.total-score {
+  font-size: 18px;
+  font-weight: bold;
+  color: #004B87;
+}
+
+.score-interpretation {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #333;
+}
+
+/* Tips Section */
+.scoring-tips {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.tips-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.tip-item {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  width: 100%;
+  max-width: 250px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tip-item h3 {
+  color: #004B87;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.tip-item p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .scoring-container {
+    padding: 12px;
+    margin: 15px;
+  }
+  
+  .criteria-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .calculator-form {
+    padding: 15px;
+  }
+  
+  .form-row input {
+    padding: 7px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scoring-chart {
+    height: 180px !important;
+  }
+  
+  .criteria-number {
+    min-width: 28px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 14px;
+  }
+  
+  .tip-item {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,792 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+  color: #333;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #004B87, #002147);
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+}
+
+.header-img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+}
+
+/* Navigation Bar */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  background: #FFD700;
+  padding: 15px;
+}
+
+.nav-container a {
+  text-decoration: none;
+  color: #004B87;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+.nav-container a:hover {
+  background: rgba(0, 75, 135, 0.1);
+  border-radius: 5px;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #004B87;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 30px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dropbtn:hover {
+  background-color: #002147;
+  transform: scale(1.05);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 220px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #FFD700;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('../img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.hero-content h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero-content button {
+  background: #FFD700;
+  color: #004B87;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.hero-content button:hover {
+  background: #e6c200;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-bar input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background: #004B87;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #002147;
+}
+
+/* Filter System */
+.filter-section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.filter-section select, .filter-section input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.filter-section button {
+  padding: 10px 20px;
+  background: #FFD700;
+  color: #004B87;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filter-section button:hover {
+  background: #e6c200;
+}
+
+/* Real-Time News */
+.news {
+  margin: 40px 0;
+}
+
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.news-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  text-align: left;
+}
+
+.news-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.news-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Investment Opportunities */
+.investments {
+  margin: 40px 0;
+}
+
+.investment-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.investment-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  text-align: left;
+}
+
+.investment-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.investment-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Blockchain Integration */
+.blockchain {
+  margin: 40px 0;
+}
+
+.blockchain button {
+  background: #004B87;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.blockchain button:hover {
+  background: #002147;
+}
+
+/* Interactive Map */
+.map-container {
+  margin: 40px 0;
+}
+
+/* Government Efficiency Dashboard */
+.dashboard {
+  margin: 40px 0;
+}
+
+.dashboard-content {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.metric {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 30%;
+}
+
+.metric h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.metric p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Gamification */
+.gamification {
+  margin: 40px 0;
+}
+
+.gamification button {
+  background: #FFD700;
+  color: #004B87;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.gamification button:hover {
+  background: #e6c200;
+}
+
+/* Slideshow */
+.slideshow-container {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.slide {
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  display: none;
+  margin: auto;
+}
+
+/* Footer */
+.footer {
+  background: #004B87;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.social-media img {
+  width: 24px;
+  margin: 0 10px;
+}
+
+/* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #004B87;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#backToTop:hover {
+  background: #002147;
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #004B87;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Calculator Section */
+.calculator {
+  background: white;
+  margin: 40px 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.calculator h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #004B87;
+}
+
+.calculator p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.calculator input {
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.calculator button {
+  padding: 12px 20px;
+  background: #004B87;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.calculator button:hover {
+  background: #002147;
+}
+
+.calculator h3 {
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #004B87;
+}
+
+/* Vision Section */
+.vision {
+  margin: 40px 0;
+  padding: 20px;
+}
+
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-container a {button {
+    background: #FFD700;
+    color: #004B87;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #e6c200;
+  }
+  .calculator-tips ul {
+    padding-left: 20px;
+    list-style-type: disc;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .calculator-form input,
+  .timeline-calculator input,
+  .roi-calculator input,
+  .comparison-table input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 250px;
+  }
+      
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .card, .news-card, .investment-card, .metric {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .calculator {
+    width: 90%;
+  }
+
+  .slideshow-container {
+    width: 100%;
+  }
+
+  .slide {
+    width: 100%;
+  }
+
+  .vision-img, .responsive-img {
+    width: 100%;
+  }
+}
+.slide {
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  display: none;
+  margin: auto;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.show {
+  display: block;
+  opacity: 1;
+}
+/* About System - Cost Effective */
+.about-system {
+  background: #f8fafc;
+  padding: 60px 20px;
+  border-top: 1px solid #e0e8f0;
+  border-bottom: 1px solid #e0e8f0;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-container h2 {
+  text-align: center;
+  color: #004B87;
+  margin-bottom: 40px;
+  font-size: 1.8rem;
+}
+
+.value-proposition {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.value-card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #004B87;
+}
+
+.value-card h3 {
+  color: #002147;
+  margin: 15px 0;
+}
+
+.value-card p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.budget-highlights {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 40px 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.budget-highlights h3 {
+  color: #004B87;
+  margin-top: 0;
+  text-align: center;
+}
+
+.budget-bar {
+  height: 40px;
+  background: #f0f4f8;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 30px 0;
+  display: flex;
+}
+
+.bar-segment {
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bar-segment span {
+  position: relative;
+  z-index: 2;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+
+.bar-segment:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,0.3);
+}
+
+.development { background: #004B87; }
+.training { background: #0077cc; }
+.infrastructure { background: #00a0e9; }
+.contingency { background: #7fc8f1; }
+
+.cost-comparison {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.comparison-item {
+  text-align: center;
+  padding: 15px 25px;
+  border-radius: 8px;
+  background: #f0f4f8;
+  min-width: 200px;
+}
+
+.comparison-item.commercial {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.comparison-item .label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comparison-item .amount {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.comparison-item .duration {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.sustainability {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.sustainability h3 {
+  color: #004B87;
+  margin-top: 0;
+  text-align: center;
+}
+
+.sustainability ul {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 25px auto;
+}
+
+.sustainability li {
+  padding: 10px 0;
+  position: relative;
+  padding-left: 30px;
+}
+
+.sustainability li:before {
+  content: "✓";
+  color: #004B87;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.budget-download {
+  display: block;
+  margin: 30px auto 0;
+  background: #004B87;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.budget-download:hover {
+  background: #002147;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .value-proposition {
+      grid-template-columns: 1fr;
+  }
+  
+  .budget-bar {
+      flex-direction: column;
+      height: auto;
+  }
+  
+  .bar-segment {
+      height: 40px;
+      width: 100% !important;
+      justify-content: flex-start;
+      padding-left: 15px;
+  }
+}

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Project Reports - Tender Monitoring System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/verify.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        <h1>Tender Monitoring & Verification System</h1>
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="../user">Home</a>
+            <a href="../user/">Tenders</a>
+            <a href="../user/investors.html">Investors</a>
+            <a href="../user/government.html">Government</a>
+            <a href="../user/news.html">News</a>
+            <a href="../user/calculator.html">Calculator</a>
+            <a href="../admin/blockchain.html">Blockchain</a> <!-- Add this line -->
+            <div class="dropdown">
+                <button class="dropbtn">More ▼</button>
+                <div class="dropdown-content">
+                    <a href="../user/documents.html">Download Tender Documents</a>
+                    <a href="../user/scoring.html">Tender 10-Point Scoring System</a>
+                    <a href="../user/verify.html">Verify Project Reports</a>
+                    <a href="../user/status.html">Project Status Updates</a>
+                    <a href="../admin/blockchain">Blockchain Verification</a> <!-- Also keep it here -->
+                </div>
+            </div>
+        </div>
+    </nav>
+  
+    <!-- Verification Content -->
+    <div class="verification-container">
+        <h1>Verify Project Reports</h1>
+        
+        <div class="verification-intro">
+            <p>Our blockchain-based verification system ensures the authenticity and integrity of all project reports and documentation. Use this tool to verify any project report or document in our system.</p>
+        </div>
+        
+        <!-- Verification Tool -->
+        <div class="verification-tool">
+            <h2>Document Verification</h2>
+            
+            <div class="verification-options">
+                <div class="option">
+                    <input type="radio" id="verifyByHash" name="verifyOption" value="hash" checked>
+                    <label for="verifyByHash">Verify by Document Hash</label>
+                </div>
+                
+                <div class="option">
+                    <input type="radio" id="verifyByID" name="verifyOption" value="id">
+                    <label for="verifyByID">Verify by Project ID</label>
+                </div>
+                
+                <div class="option">
+                    <input type="radio" id="verifyByUpload" name="verifyOption" value="upload">
+                    <label for="verifyByUpload">Verify by Document Upload</label>
+                </div>
+            </div>
+            
+            <div class="verification-input-container">
+                <div id="hashInput" class="verification-input active">
+                    <input type="text" id="documentHash" placeholder="Enter document hash (e.g., 0x8f2e5...)">
+                    <button onclick="verifyByHash()">Verify</button>
+                </div>
+                
+                <div id="idInput" class="verification-input">
+                    <input type="text" id="projectID" placeholder="Enter project ID (e.g., PRJ-2025-0123)">
+                    <select id="documentType">
+                        <option value="">Select Document Type</option>
+                        <option value="progress">Progress Report</option>
+                        <option value="financial">Financial Statement</option>
+                        <option value="completion">Completion Certificate</option>
+                        <option value="audit">Audit Report</option>
+                    </select>
+                    <button onclick="verifyByID()">Verify</button>
+                </div>
+                
+                <div id="uploadInput" class="verification-input">
+                    <input type="file" id="documentUpload">
+                    <button onclick="verifyByUpload()">Upload & Verify</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Verification Result -->
+        <div class="verification-result" id="verificationResult">
+            <div class="result-placeholder">
+                <p>Verification results will appear here</p>
+            </div>
+        </div>
+        
+        <!-- How It Works -->
+        <div class="how-it-works">
+            <h2>How Blockchain Verification Works</h2>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Document Hashing</h3>
+                        <p>When a document is created, a unique cryptographic hash is generated based on its content.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Blockchain Storage</h3>
+                        <p>The hash is stored on a blockchain with a timestamp, creating an immutable record.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Verification Process</h3>
+                        <p>When verifying, the system compares the document's hash with the one stored on the blockchain.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Confirmation</h3>
+                        <p>If the hashes match, the document is verified as authentic and unaltered.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Verification Statistics -->
+        <div class="verification-stats">
+            <h2>Verification System Statistics</h2>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-value" id="documentsVerified">1,457</div>
+                    <div class="stat-label">Documents Verified</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value" id="projectsTracked">149</div>
+                    <div class="stat-label">Projects Tracked</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value" id="fraudPrevented">23</div>
+                    <div class="stat-label">Fraud Attempts Prevented</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-value" id="averageVerificationTime">2.4s</div>
+                    <div class="stat-label">Average Verification Time</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>© 2024 Tender Monitoring System | Designed for Transparency and Growth</p>
+            <div class="social-media">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up verification option switching
+            const verifyOptions = document.getElementsByName('verifyOption');
+            verifyOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    // Hide all input containers
+                    const inputContainers = document.querySelectorAll('.verification-input');
+                    inputContainers.forEach(container => {
+                        container.classList.remove('active');
+                    });
+                    
+                    // Show the selected input container
+                    const selectedValue = this.value;
+                    document.getElementById(`${selectedValue}Input`).classList.add('active');
+                });
+            });
+        });
+
+        function verifyByHash() {
+            const hash = document.getElementById('documentHash').value.trim();
+            
+            if (!hash) {
+                alert('Please enter a document hash');
+                return;
+            }
+            
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'block';
+            
+            // Simulate verification process
+            setTimeout(() => {
+                // Hide loading spinner
+                document.getElementById('loadingSpinner').style.display = 'none';
+                
+                // Display verification result
+                const resultContainer = document.getElementById('verificationResult');
+                
+                // For demo purposes, we'll verify hashes that start with "0x8f2e5"
+                if (hash.startsWith('0x8f2e5')) {
+                    resultContainer.innerHTML = `
+                        <div class="result-success">
+                            <div class="result-icon">✓</div>
+                            <div class="result-details">
+                                <h3>Document Verified</h3>
+                                <p>Hash: ${hash}</p>
+                                <p>Timestamp: March 25, 2025, 14:32:18 GMT</p>
+                                <p>Project: Cape Town Infrastructure Project</p>
+                                <p>Document Type: Progress Report</p>
+                                <p>Blockchain: Ethereum</p>
+                                <p>Transaction ID: 0x7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    resultContainer.innerHTML = `
+                        <div class="result-failure">
+                            <div class="result-icon">✗</div>
+                            <div class="result-details">
+                                <h3>Verification Failed</h3>
+                                <p>The document hash ${hash} could not be verified.</p>
+                                <p>Possible reasons:</p>
+                                <ul>
+                                    <li>The hash is incorrect</li>
+                                    <li>The document has been modified</li>
+                                    <li>The document is not in our system</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 2000);
+        }
+
+        function verifyByID() {
+            const projectID = document.getElementById('projectID').value.trim();
+            const documentType = document.getElementById('documentType').value;
+            
+            if (!projectID) {
+                alert('Please enter a project ID');
+                return;
+            }
+            
+            if (!documentType) {
+                alert('Please select a document type');
+                return;
+            }
+            
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'block';
+            
+            // Simulate verification process
+            setTimeout(() => {
+                // Hide loading spinner
+                document.getElementById('loadingSpinner').style.display = 'none';
+                
+                // Display verification result
+                const resultContainer = document.getElementById('verificationResult');
+                
+                // For demo purposes, we'll verify project IDs that start with "PRJ-2025"
+                if (projectID.startsWith('PRJ-2025')) {
+                    resultContainer.innerHTML = `
+                        <div class="result-success">
+                            <div class="result-icon">✓</div>
+                            <div class="result-details">
+                                <h3>Document Verified</h3>
+                                <p>Project ID: ${projectID}</p>
+                                <p>Document Type: ${documentType.charAt(0).toUpperCase() + documentType.slice(1)} Report</p>
+                                <p>Last Updated: March 28, 2025</p>
+                                <p>Status: Verified</p>
+                                <p>Hash: 0x8f2e5a3b7c9d1e0f2a3b4c5d6e7f8a9b0c1d2e3f</p>
+                                <button onclick="viewDocument('${projectID}', '${documentType}')">View Document</button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    resultContainer.innerHTML = `
+                        <div class="result-failure">
+                            <div class="result-icon">✗</div>
+                            <div class="result-details">
+                                <h3>Verification Failed</h3>
+                                <p>No ${documentType} report found for project ID ${projectID}.</p>
+                                <p>Please check the project ID and document type and try again.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 2000);
+        }
+
+        function verifyByUpload() {
+            const fileInput = document.getElementById('documentUpload');
+            
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert('Please select a file to upload');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'block';
+            
+            // Simulate file upload and verification process
+            setTimeout(() => {
+                // Hide loading spinner
+                document.getElementById('loadingSpinner').style.display = 'none';
+                
+                // Display verification result
+                const resultContainer = document.getElementById('verificationResult');
+                
+                // For demo purposes, we'll randomly verify or reject the uploaded file
+                const isVerified = Math.random() > 0.5;
+                
+                if (isVerified) {
+                    resultContainer.innerHTML = `
+                        <div class="result-success">
+                            <div class="result-icon">✓</div>
+                            <div class="result-details">
+                                <h3>Document Verified</h3>
+                                <p>Filename: ${file.name}</p>
+                                <p>File Size: ${(file.size / 1024).toFixed(2)} KB</p>
+                                <p>Calculated Hash: 0x8f2e5a3b7c9d1e0f2a3b4c5d6e7f8a9b0c1d2e3f</p>
+                                <p>Matching Document Found: Progress Report for Cape Town Infrastructure Project</p>
+                                <p>Last Modified: ${new Date(file.lastModified).toLocaleString()}</p>
+                                <p>Status: Verified</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    resultContainer.innerHTML = `
+                        <div class="result-failure">
+                            <div class="result-icon">✗</div>
+                            <div class="result-details">
+                                <h3>Verification Failed</h3>
+                                <p>Filename: ${file.name}</p>
+                                <p>The uploaded document could not be verified.</p>
+                                <p>Possible reasons:</p>
+                                <ul>
+                                    <li>The document has been modified</li>
+                                    <li>It is not registered on the blockchain</li>
+                                    <li>The file is corrupt or unsupported</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 2000);
+        }
+
+        function viewDocument(projectID, documentType) {
+            alert(`Opening ${documentType} report for project ${projectID}.`);
+            // You can later replace this with real navigation or a modal viewer
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+        }
+    </script>
+</body>
+</html>

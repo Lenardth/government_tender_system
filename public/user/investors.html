@@ -1,0 +1,184 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investors - Tender Monitoring System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/investors.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        <h1>Tender Monitoring & Verification System</h1>
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="../user">Home</a>
+            <a href="../user/">Tenders</a>
+            <a href="../user/investors.html">Investors</a>
+            <a href="../user/government.html">Government</a>
+            <a href="../user/news.html">News</a>
+            <a href="../user/calculator.html">Calculator</a>
+            <a href="../admin/blockchain.html">Blockchain</a> <!-- Add this line -->
+            <div class="dropdown">
+                <button class="dropbtn">More ▼</button>
+                <div class="dropdown-content">
+                    <a href="../user/documents.html">Download Tender Documents</a>
+                    <a href="../user/scoring.html">Tender 10-Point Scoring System</a>
+                    <a href="../user/verify.html">Verify Project Reports</a>
+                    <a href="../user/status.html">Project Status Updates</a>
+                    <a href="../admin/blockchain">Blockchain Verification</a> <!-- Also keep it here -->
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Investors Content -->
+    <div class="investors-container">
+        <h1>Investment Opportunities</h1>
+        
+        <div class="investor-intro">
+            <p>Discover high-potential investment opportunities in South African public infrastructure projects. Our platform connects investors with government-backed initiatives that offer stable returns while contributing to national development.</p>
+        </div>
+        
+        <!-- Investment Opportunities -->
+        <div id="investmentsList" class="investments-list">
+            <!-- Investments will be loaded here by JavaScript -->
+        </div>
+        
+        <!-- Investment Benefits -->
+        <div class="benefits-section">
+            <h2>Benefits of Investing in Public Projects</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Government Backing</h3>
+                    <p>Projects are supported by government guarantees, reducing investment risk.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Stable Returns</h3>
+                    <p>Public infrastructure projects typically offer predictable, long-term returns.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Social Impact</h3>
+                    <p>Your investment directly contributes to South Africa's development and job creation.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Transparency</h3>
+                    <p>Blockchain verification ensures complete transparency throughout the project lifecycle.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Investment Process -->
+        <div class="process-section">
+            <h2>How to Invest</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Register as an Investor</h3>
+                    <p>Create an account and complete the verification process.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Browse Opportunities</h3>
+                    <p>Explore available projects and review detailed prospectuses.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Make Your Investment</h3>
+                    <p>Select your investment amount and complete the secure transaction.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Track Performance</h3>
+                    <p>Monitor your investment through our blockchain-verified tracking system.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="contact-section">
+            <h2>Interested in Investing?</h2>
+            <p>Fill out the form below and our investment team will contact you with more information.</p>
+            <form id="investorForm" class="contact-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number">
+                <select required>
+                    <option value="" disabled selected>Investment Range</option>
+                    <option value="range1">R100,000 - R500,000</option>
+                    <option value="range2">R500,000 - R1,000,000</option>
+                    <option value="range3">R1,000,000 - R5,000,000</option>
+                    <option value="range4">R5,000,000+</option>
+                </select>
+                <textarea placeholder="Additional Information" rows="4"></textarea>
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>© 2024 Tender Monitoring System | Designed for Transparency and Growth</p>
+            <div class="social-media">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load investments
+            loadInvestments();
+            displayInvestments();
+            
+            // Handle form submission
+            document.getElementById('investorForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your interest! Our investment team will contact you shortly.');
+                this.reset();
+            });
+        });
+
+        function displayInvestments() {
+            const investmentsListElement = document.getElementById('investmentsList');
+            investmentsListElement.innerHTML = '';
+            
+            investments.forEach(item => {
+                const investmentCard = document.createElement('div');
+                investmentCard.className = 'investment-card';
+                investmentCard.innerHTML = `
+                    <h3>${item.title}</h3>
+                    <p><strong>Expected ROI:</strong> ${item.roi}</p>
+                    <p><strong>Minimum Investment:</strong> ${item.minInvestment}</p>
+                    <p>${item.description}</p>
+                    <button onclick="showInvestmentDetails('${item.title}')">Learn More</button>
+                `;
+                investmentsListElement.appendChild(investmentCard);
+            });
+        }
+
+        function showInvestmentDetails(title) {
+            alert(`You requested more information about "${title}". In a real application, this would show detailed investment information.`);
+        }
+    </script>
+</body>
+
+</html>

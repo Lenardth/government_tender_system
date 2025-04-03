@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Status Updates - Tender Monitoring System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/status.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        <h1>Tender Monitoring & Verification System</h1>
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Navigation Bar -->
+  
+        <nav>
+            <div class="nav-container">
+                <a href="../user">Home</a>
+                <a href="../user/">Tenders</a>
+                <a href="../user/investors.html">Investors</a>
+                <a href="../user/government.html">Government</a>
+                <a href="../user/news.html">News</a>
+                <a href="../user/calculator.html">Calculator</a>
+                <a href="../admin/blockchain.html">Blockchain</a> <!-- Add this line -->
+                <div class="dropdown">
+                    <button class="dropbtn">More ▼</button>
+                    <div class="dropdown-content">
+                        <a href="../user/documents.html">Download Tender Documents</a>
+                        <a href="../user/scoring.html">Tender 10-Point Scoring System</a>
+                        <a href="../user/verify.html">Verify Project Reports</a>
+                        <a href="../user/status.html">Project Status Updates</a>
+                        <a href="../admin/blockchain">Blockchain Verification</a> <!-- Also keep it here -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+    <!-- Status Updates Content -->
+    <div class="status-container">
+        <h1>Project Status Updates</h1>
+        
+        <div class="status-intro">
+            <p>Track the progress of all active tender projects across South Africa. Our real-time monitoring system provides transparent updates on project milestones, budget utilization, and completion status.</p>
+        </div>
+        
+        <!-- Project Search -->
+        <div class="project-search">
+            <h2>Find a Project</h2>
+            <div class="search-options">
+                <input type="text" id="projectSearchInput" placeholder="Search by project name, ID, or location">
+                <select id="projectCategoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="construction">Construction</option>
+                    <option value="it">IT Services</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="energy">Energy</option>
+                    <option value="education">Education</option>
+                </select>
+                <select id="projectStatusFilter">
+                    <option value="all">All Statuses</option>
+                    <option value="planning">Planning</option>
+                    <option value="inProgress">In Progress</option>
+                    <option value="delayed">Delayed</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <button onclick="searchProjects()">Search</button>
+            </div>
+        </div>
+        
+        <!-- Featured Projects -->
+        <div class="featured-projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid" id="featuredProjects">
+                <!-- Featured projects will be loaded here by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Project Status Map -->
+        <div class="status-map-container">
+            <h2>Project Locations</h2>
+            <div id="statusMap" style="height: 400px; width: 100%;"></div>
+        </div>
+        
+        <!-- All Projects -->
+        <div class="all-projects">
+            <h2>All Active Projects</h2>
+            <div class="projects-table-container">
+                <table class="projects-table">
+                    <thead>
+                        <tr>
+                            <th>Project ID</th>
+                            <th>Project Name</th>
+                            <th>Location</th>
+                            <th>Category</th>
+                            <th>Start Date</th>
+                            <th>Deadline</th>
+                            <th>Budget</th>
+                            <th>Status</th>
+                            <th>Completion</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="projectsTableBody">
+                        <!-- Projects will be loaded here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button onclick="changePage(-1)">Previous</button>
+                <span id="currentPage">Page 1 of 5</span>
+                <button onclick="changePage(1)">Next</button>
+            </div>
+        </div>
+        
+        <!-- Project Details Modal -->
+        <div id="projectModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <div id="projectDetails">
+                    <!-- Project details will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Status Updates Subscription -->
+        <div class="status-subscription">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to receive automatic updates for specific projects or regions.</p>
+            <form id="subscriptionForm" class="subscription-form">
+                <div class="form-group">
+                    <label for="subscriptionEmail">Email Address</label>
+                    <input type="email" id="subscriptionEmail" placeholder="Your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="subscriptionProjects">Projects of Interest (optional)</label>
+                    <input type="text" id="subscriptionProjects" placeholder="Project IDs separated by commas">
+                </div>
+                <div class="form-group">
+                    <label for="subscriptionRegion">Region of Interest</label>
+                    <select id="subscriptionRegion">
+                        <option value="all">All South Africa</option>
+                        <option value="gauteng">Gauteng</option>
+                        <option value="western-cape">Western Cape</option>
+                        <option value="eastern-cape">Eastern Cape</option>
+                        <option value="kwazulu-natal">KwaZulu-Natal</option>
+                        <option value="free-state">Free State</option>
+                        <option value="north-west">North West</option>
+                        <option value="mpumalanga">Mpumalanga</option>
+                        <option value="limpopo">Limpopo</option>
+                        <option value="northern-cape">Northern Cape</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="subscriptionFrequency">Update Frequency</label>
+                    <select id="subscriptionFrequency">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="milestone">Only at Milestones</option>
+                    </select>
+                </div>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>© 2024 Tender Monitoring System | Designed for Transparency and Growth</p>
+            <div class="social-media">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        let currentPageNumber = 1;
+        let projectsData = [];
+        let statusMap;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize map
+            initStatusMap();
+            
+            // Load projects data
+            loadProjectsData();
+            
+            // Handle subscription form submission
+            document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                subscribeToUpdates();
+            });
+            
+            // Initialize modal
+            const modal = document.getElementById('projectModal');
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    closeModal();
+                }
+            }
+        });
+
+        function initStatusMap() {
+            // Create a map centered on South Africa
+            statusMap = L.map('statusMap').setView([-30.5595, 22.9375], 5);
+            
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(statusMap);
+        }
+
+        function loadProjectsData() {
+            // Show loading spinner
+            document.getElementById('loadingSpinner').style.display = 'block';
+            
+            // Simulate loading data from server
+            setTimeout(() => {
+                // Sample projects data
+                projectsData = [
+                    {
+                        id: 'PRJ-2025-0001',
+                        name: 'Cape Town Infrastructure Project',
+                        location: 'Cape Town',
+                        coordinates: [-33.9249, 18.4241],
+                        category: 'construction',
+                        startDate: '2025-01-15',
+                        deadline: '2025-12-31',
+                        budget: 'R25,000,000',
+                        status: 'inProgress',
+                        completion: 35,
+                        description: 'Development of road infrastructure in Cape Town metropolitan area.',
+                        contractor: 'ABC Construction Ltd',
+                        milestones: [
+                            { name: 'Planning Phase', date: '2025-01-15', status: 'completed' },
+                            { name: 'Foundation Work', date: '2025-03-01', status: 'completed' },
+                            { name: 'Structural Development', date: '2025-06-15', status: 'inProgress' },
+                            { name: 'Finishing Work', date: '2025-10-01', status: 'pending' },
+                            { name: 'Final Inspection', date: '2025-12-15', status: 'pending' }
+                        ]
+                    },
+                    {
+                        id: 'PRJ-2025-0002',
+                        name: 'Durban Port Expansion',
+                        location: 'Durban',
+                        coordinates: [-29.8587, 31.0218],
+                        category: 'construction',
+                        startDate: '2025-02-10',
+                        deadline: '2026-03-31',
+                        budget: 'R50,000,000',
+                        status: 'inProgress',
+                        completion: 20,
+                        description: 'Expansion of Durban port facilities to increase cargo handling capacity.',
+                        contractor: 'Maritime Developments Inc.',
+                        milestones: [
+                            { name: 'Planning Phase', date: '2025-02-10', status: 'completed' },
+                            { name: 'Dredging Operations', date: '2025-04-15', status: 'completed' },
+                            { name: 'Dock Construction', date: '2025-08-01', status: 'inProgress' },
+                            { name: 'Equipment Installation', date: '2025-12-15', status: 'pending' },
+                            { name: 'Testing and Commissioning', date: '2026-02-28', status: 'pending' }
+                        ]
+                    },
+                    {
+                        id: 'PRJ-2025-0003',
+                        name: 'Johannesburg Solar Energy Initiative',
+                        location: 'Johannesburg',
+                        coordinates: [-26.2041, 28.0473],
+                        category: 'energy',
+                        startDate: '2025-03-01',
+                        deadline: '2025-09-30',
+                        budget: 'R15,000,000',
+                        status: 'inProgress',
+                        completion: 45,
+                        description: 'Installation of solar panels on government buildings in Johannesburg.',
+                        contractor: 'SolarTech Solutions',
+                        milestones: [
+                            { name: 'Site Assessment', date: '2025-03-01', status: 'completed' },
+                            { name: 'Equipment Procurement', date: '2025-04-15', status: 'completed' },
+                            { name: 'Installation Phase 1', date: '2025-06-01', status: 'completed' },
+                            { name: 'Installation Phase 2', date: '2025-08-01', status: 'inProgress' },
+                            { name: 'Testing and Commissioning', date: '2025-09-15', status: 'pending' }
+                        ]
+                    },
+                    {
+                        id: 'PRJ-2025-0004',
+                        name: 'National Healthcare Database System',
+                        location: 'Pretoria',
+                        coordinates: [-25.7479, 28.2293],
+                        category: 'it',
+                        startDate: '2025-01-20',
+                        deadline: '2025-07-31',
+                        budget: 'R12,000,000',
+                        status: 'delayed',
+                        completion: 30,
+                        description: 'Development of a centralized healthcare database system for public hospitals.',
+                        contractor: 'DataSys Technologies',
+                        milestones: [
+                            { name: 'Requirements Analysis', date: '2025-01-20', status: 'completed' },
+                            { name: 'System Design', date: '2025-03-01', status: 'completed' },
+                            { name: 'Development Phase', date: '2025-05-15', status: 'delayed' },
+                            { name: 'Testing', date: '2025-06-30', status: 'pending' },
+                            { name: 'Deployment', date: '2025-07-15', status: 'pending' }
+                        ]
+                    },
+                    {
+                        id: 'PRJ-2025-0005',
+                        name: 'East London Hospital Renovation',
+                        location: 'East London',
+                        coordinates: [-33.0145, 27.9116],
+                        category: 'healthcare',
+                        startDate: '2025-04-01',
+                        deadline: '2026-04-30',
+                        budget: 'R30,000,000',
+                        status: 'planning',
+                        completion: 5,
+                        description: 'Comprehensive renovation of East London General Hospital.',
+                        contractor: 'HealthBuild Contractors',
+                        milestones: [
+                            { name: 'Planning Phase', date: '2025-04-01', status: 'inProgress' },
+                            { name: 'Procurement', date: '2025-06-15', status: 'pending' },
+                            { name: 'Procurement', date: '2025-06-15', status: 'pending' },
+                            { name: 'Renovation Work', date: '2025-10-01', status: 'pending' },
+                            { name: 'Final Inspection', date: '2026-04-15', status: 'pending' }
+                        ]
+                    }
+                ];
+
+                // Populate map with project markers
+                projectsData.forEach(project => {
+                    if (project.coordinates) {
+                        L.marker(project.coordinates)
+                            .addTo(statusMap)
+                            .bindPopup(`<strong>${project.name}</strong><br>${project.location}`);
+                    }
+                });
+
+                // Populate featured and all projects
+                displayProjects();
+                
+                // Hide loading spinner
+                document.getElementById('loadingSpinner').style.display = 'none';
+            }, 1000);
+        }
+
+        function displayProjects() {
+            const featuredContainer = document.getElementById('featuredProjects');
+            const tableBody = document.getElementById('projectsTableBody');
+
+            featuredContainer.innerHTML = '';
+            tableBody.innerHTML = '';
+
+            const featured = projectsData.slice(0, 3);
+            const allProjects = projectsData;
+
+            featured.forEach(project => {
+                const div = document.createElement('div');
+                div.className = 'project-card';
+                div.innerHTML = `
+                    <h3>${project.name}</h3>
+                    <p>${project.location} • ${project.category}</p>
+                    <p>Status: ${project.status}</p>
+                    <button onclick='viewProject("${project.id}")'>View Details</button>
+                `;
+                featuredContainer.appendChild(div);
+            });
+
+            allProjects.forEach(project => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${project.id}</td>
+                    <td>${project.name}</td>
+                    <td>${project.location}</td>
+                    <td>${project.category}</td>
+                    <td>${project.startDate}</td>
+                    <td>${project.deadline}</td>
+                    <td>${project.budget}</td>
+                    <td>${project.status}</td>
+                    <td>${project.completion}%</td>
+                    <td><button onclick='viewProject("${project.id}")'>Details</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function viewProject(projectId) {
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project) return;
+
+            const modalContent = document.getElementById('projectDetails');
+            modalContent.innerHTML = `
+                <h2>${project.name}</h2>
+                <p><strong>Location:</strong> ${project.location}</p>
+                <p><strong>Category:</strong> ${project.category}</p>
+                <p><strong>Contractor:</strong> ${project.contractor}</p>
+                <p><strong>Budget:</strong> ${project.budget}</p>
+                <p><strong>Status:</strong> ${project.status}</p>
+                <p><strong>Completion:</strong> ${project.completion}%</p>
+                <h3>Milestones</h3>
+                <ul>
+                    ${project.milestones.map(m => `<li>${m.name} (${m.date}) - ${m.status}</li>`).join('')}
+                </ul>
+            `;
+            document.getElementById('projectModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function changePage(direction) {
+            // This would handle pagination logic (left for expansion)
+            alert("Pagination logic not implemented yet.");
+        }
+
+        function searchProjects() {
+            // This would handle filtering logic (left for expansion)
+            alert("Search and filter functionality is under development.");
+        }
+
+        function subscribeToUpdates() {
+            const email = document.getElementById('subscriptionEmail').value;
+            const projects = document.getElementById('subscriptionProjects').value;
+            const region = document.getElementById('subscriptionRegion').value;
+            const frequency = document.getElementById('subscriptionFrequency').value;
+
+            alert(`Subscribed ${email} to updates.\nRegion: ${region}\nFrequency: ${frequency}`);
+            document.getElementById('subscriptionForm').reset();
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+        }
+    </script>
+</body>
+
+</html>
