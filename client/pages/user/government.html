@@ -10,227 +10,106 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <a href="/index.html" class="header-img-link">
-      <img src="/assets/south-africa.png" alt="SA Flag" class="header-img">
-    </a>
-    <h1 class="header-title">Tender Monitoring &amp; Verification System</h1>
-    <div class="header-auth">
-      <div id="authLinks"></div>
-      <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+<main id="page-content" class="government-container">
+  <h1>Government Dashboard</h1>
+  <div class="gov-intro">
+    <p>Real-time insights into tender processes, project statuses, and efficiency metrics to enhance transparency and accountability in public procurement.</p>
+  </div>
+
+  <section>
+    <h2>Efficiency Dashboard</h2>
+    <div class="dashboard-content">
+      <div class="metric"><h3>Tenders Awarded</h3><p id="tendersAwarded">—</p></div>
+      <div class="metric"><h3>Projects Completed</h3><p id="projectsCompleted">—</p></div>
+      <div class="metric"><h3>Efficiency Score</h3><p id="efficiencyScore">—</p></div>
     </div>
-  </header>
+  </section>
 
-  <!-- Navigation -->
-  <nav aria-label="Main navigation">
-    <div class="nav-container">
-      <a href="/index.html">Home</a>
-      <a href="/tenders.html">Tenders</a>
-      <a href="/investors.html">Investors</a>
-      <a href="/government.html" aria-current="page">Government</a>
-      <a href="/news.html">News</a>
-      <a href="/calculator.html">Calculator</a>
-      <a href="/admin/blockchain.html">Blockchain</a>
-      <div class="dropdown">
-        <button class="dropbtn" aria-haspopup="true">More ▼</button>
-        <div class="dropdown-content" role="menu">
-          <a href="/documents.html" role="menuitem">Download Documents</a>
-          <a href="/scoring.html"   role="menuitem">Scoring System</a>
-          <a href="/verify.html"    role="menuitem">Verify Reports</a>
-          <a href="/status.html"    role="menuitem">Project Status</a>
-        </div>
-      </div>
+  <div class="project-status">
+    <h2>Project Status Overview</h2>
+    <div class="status-chart"><canvas id="statusChart"></canvas></div>
+    <div class="status-legend">
+      <div class="legend-item"><span class="legend-color" style="background:#4CAF50"></span>Completed</div>
+      <div class="legend-item"><span class="legend-color" style="background:#004B87"></span>In Progress</div>
+      <div class="legend-item"><span class="legend-color" style="background:#FFD700"></span>Delayed</div>
+      <div class="legend-item"><span class="legend-color" style="background:#e63946"></span>Cancelled</div>
     </div>
-  </nav>
+  </div>
 
-  <!-- Page Content -->
-  <main class="government-container">
-    <h1>Government Dashboard</h1>
+  <div class="recent-activity">
+    <h2>Recent Activity</h2>
+    <div class="activity-list" id="activityList"></div>
+  </div>
 
-    <div class="gov-intro">
-      <p>Real-time insights into tender processes, project statuses, and efficiency metrics to enhance transparency and accountability in public procurement.</p>
+  <div class="department-performance">
+    <h2>Department Performance</h2>
+    <table class="performance-table">
+      <thead><tr><th>Department</th><th>Projects</th><th>On Time</th><th>On Budget</th><th>Rating</th></tr></thead>
+      <tbody id="departmentTable"></tbody>
+    </table>
+  </div>
+
+  <div class="verification-system">
+    <h2>Blockchain Verification</h2>
+    <p>All tender processes are verified using blockchain technology, ensuring transparency and preventing fraud.</p>
+    <div class="verification-stats">
+      <div class="verification-stat"><h3>Verified Transactions</h3><p id="verifiedTransactions">—</p></div>
+      <div class="verification-stat"><h3>Fraud Attempts Prevented</h3><p id="fraudPrevented">—</p></div>
     </div>
+    <button onclick="window.location.href='/verify.html'">Verify a Transaction</button>
+  </div>
+</main>
 
-    <!-- Efficiency Metrics -->
-    <section>
-      <h2>Efficiency Dashboard</h2>
-      <div class="dashboard-content">
-        <div class="metric">
-          <h3>Tenders Awarded</h3>
-          <p id="tendersAwarded">—</p>
-        </div>
-        <div class="metric">
-          <h3>Projects Completed</h3>
-          <p id="projectsCompleted">—</p>
-        </div>
-        <div class="metric">
-          <h3>Efficiency Score</h3>
-          <p id="efficiencyScore">—</p>
-        </div>
-      </div>
-    </section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  showLoading();
+  setTimeout(() => {
+    document.getElementById('tendersAwarded').textContent   = '157';
+    document.getElementById('projectsCompleted').textContent = '89';
+    document.getElementById('efficiencyScore').textContent  = '76%';
+    hideLoading();
+  }, 800);
 
-    <!-- Project Status Chart -->
-    <div class="project-status">
-      <h2>Project Status Overview</h2>
-      <div class="status-chart">
-        <canvas id="statusChart"></canvas>
-      </div>
-      <div class="status-legend">
-        <div class="legend-item">
-          <span class="legend-color" style="background:#4CAF50"></span>Completed
-        </div>
-        <div class="legend-item">
-          <span class="legend-color" style="background:#004B87"></span>In Progress
-        </div>
-        <div class="legend-item">
-          <span class="legend-color" style="background:#FFD700"></span>Delayed
-        </div>
-        <div class="legend-item">
-          <span class="legend-color" style="background:#e63946"></span>Cancelled
-        </div>
-      </div>
-    </div>
+  [
+    { date:'2025-04-10', action:'Tender #2458 awarded to ABC Construction',     department:'Public Works' },
+    { date:'2025-04-09', action:'Project #1872 completed ahead of schedule',    department:'Transport'   },
+    { date:'2025-04-08', action:'New tender published for healthcare equipment', department:'Health'      },
+    { date:'2025-04-07', action:'Budget increase approved for Project #2134',   department:'Education'   },
+    { date:'2025-04-06', action:'Verification audit completed for 15 projects', department:'Treasury'    },
+  ].forEach(a => {
+    const el = document.createElement('div');
+    el.className = 'activity-item';
+    el.innerHTML = `<div class="activity-date">${a.date}</div><div class="activity-details"><p>${a.action}</p><span class="activity-department">${a.department}</span></div>`;
+    document.getElementById('activityList').appendChild(el);
+  });
 
-    <!-- Recent Activity -->
-    <div class="recent-activity">
-      <h2>Recent Activity</h2>
-      <div class="activity-list" id="activityList"></div>
-    </div>
+  [
+    { name:'Public Works', projects:42, onTime:'85%', onBudget:'78%', rating:4.2 },
+    { name:'Transport',    projects:37, onTime:'92%', onBudget:'88%', rating:4.5 },
+    { name:'Health',       projects:29, onTime:'76%', onBudget:'82%', rating:3.9 },
+    { name:'Education',    projects:31, onTime:'81%', onBudget:'75%', rating:4.0 },
+    { name:'Energy',       projects:18, onTime:'89%', onBudget:'91%', rating:4.7 },
+  ].forEach(d => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${d.name}</td><td>${d.projects}</td><td>${d.onTime}</td><td>${d.onBudget}</td><td>${d.rating}/5</td>`;
+    document.getElementById('departmentTable').appendChild(tr);
+  });
 
-    <!-- Department Performance -->
-    <div class="department-performance">
-      <h2>Department Performance</h2>
-      <table class="performance-table">
-        <thead>
-          <tr>
-            <th>Department</th>
-            <th>Projects</th>
-            <th>On Time</th>
-            <th>On Budget</th>
-            <th>Rating</th>
-          </tr>
-        </thead>
-        <tbody id="departmentTable"></tbody>
-      </table>
-    </div>
+  new Chart(document.getElementById('statusChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Completed','In Progress','Delayed','Cancelled'],
+      datasets: [{ data:[89,45,12,3], backgroundColor:['#4CAF50','#004B87','#FFD700','#e63946'], borderWidth:2, borderColor:'#fff' }]
+    },
+    options: { responsive:true, plugins:{ legend:{ display:false } } }
+  });
 
-    <!-- Blockchain Verification -->
-    <div class="verification-system">
-      <h2>Blockchain Verification</h2>
-      <p>All tender processes are verified using blockchain technology, ensuring transparency and preventing fraud.</p>
-      <div class="verification-stats">
-        <div class="verification-stat">
-          <h3>Verified Transactions</h3>
-          <p id="verifiedTransactions">—</p>
-        </div>
-        <div class="verification-stat">
-          <h3>Fraud Attempts Prevented</h3>
-          <p id="fraudPrevented">—</p>
-        </div>
-      </div>
-      <button onclick="window.location.href='/verify.html'">Verify a Transaction</button>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 Tender Monitoring System | Designed for Transparency and Growth</p>
-      <div class="social-media">
-        <a href="#" aria-label="Facebook"><img src="/assets/facebook.png" alt="Facebook"></a>
-        <a href="#" aria-label="Twitter"><img src="/assets/twitter.png" alt="Twitter"></a>
-        <a href="#" aria-label="LinkedIn"><img src="/assets/linkedin.png" alt="LinkedIn"></a>
-      </div>
-    </div>
-  </footer>
-
-  <button id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
-  <div class="spinner" id="loadingSpinner" aria-hidden="true"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="/js/auth.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      updateDashboard();
-      loadActivityData();
-      loadDepartmentData();
-      initStatusChart();
-      updateVerificationStats();
-    });
-
-    function updateDashboard() {
-      showLoading();
-      setTimeout(() => {
-        document.getElementById('tendersAwarded').textContent   = '157';
-        document.getElementById('projectsCompleted').textContent = '89';
-        document.getElementById('efficiencyScore').textContent  = '76%';
-        hideLoading();
-      }, 800);
-    }
-
-    function loadActivityData() {
-      const activities = [
-        { date: '2025-04-10', action: 'Tender #2458 awarded to ABC Construction',       department: 'Public Works' },
-        { date: '2025-04-09', action: 'Project #1872 completed ahead of schedule',       department: 'Transport'   },
-        { date: '2025-04-08', action: 'New tender published for healthcare equipment',   department: 'Health'      },
-        { date: '2025-04-07', action: 'Budget increase approved for Project #2134',      department: 'Education'   },
-        { date: '2025-04-06', action: 'Verification audit completed for 15 projects',   department: 'Treasury'    },
-      ];
-      const list = document.getElementById('activityList');
-      activities.forEach(a => {
-        const el = document.createElement('div');
-        el.className = 'activity-item';
-        el.innerHTML = `
-          <div class="activity-date">${a.date}</div>
-          <div class="activity-details">
-            <p>${a.action}</p>
-            <span class="activity-department">${a.department}</span>
-          </div>`;
-        list.appendChild(el);
-      });
-    }
-
-    function loadDepartmentData() {
-      const depts = [
-        { name: 'Public Works', projects: 42, onTime: '85%', onBudget: '78%', rating: 4.2 },
-        { name: 'Transport',    projects: 37, onTime: '92%', onBudget: '88%', rating: 4.5 },
-        { name: 'Health',       projects: 29, onTime: '76%', onBudget: '82%', rating: 3.9 },
-        { name: 'Education',    projects: 31, onTime: '81%', onBudget: '75%', rating: 4.0 },
-        { name: 'Energy',       projects: 18, onTime: '89%', onBudget: '91%', rating: 4.7 },
-      ];
-      const tbody = document.getElementById('departmentTable');
-      depts.forEach(d => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${d.name}</td><td>${d.projects}</td><td>${d.onTime}</td><td>${d.onBudget}</td><td>${d.rating}/5</td>`;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function initStatusChart() {
-      new Chart(document.getElementById('statusChart'), {
-        type: 'doughnut',
-        data: {
-          labels: ['Completed', 'In Progress', 'Delayed', 'Cancelled'],
-          datasets: [{
-            data: [89, 45, 12, 3],
-            backgroundColor: ['#4CAF50', '#004B87', '#FFD700', '#e63946'],
-            borderWidth: 2,
-            borderColor: '#fff',
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: { legend: { display: false } }
-        }
-      });
-    }
-
-    function updateVerificationStats() {
-      document.getElementById('verifiedTransactions').textContent = '1,457';
-      document.getElementById('fraudPrevented').textContent       = '23';
-    }
-  </script>
+  document.getElementById('verifiedTransactions').textContent = '1,457';
+  document.getElementById('fraudPrevented').textContent       = '23';
+});
+</script>
 </body>
 </html>

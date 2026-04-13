@@ -214,18 +214,19 @@
 }
 
 .stat-card {
-  background: #f8f9fa;
+  background: white;
   border-top: 4px solid #004B87;
-  border-radius: 8px;
-  padding: 20px 16px;
+  border-radius: 10px;
+  padding: 24px 16px;
   text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
 .stat-card h3 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #004B87;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 }
 
 .stat-card p {
@@ -305,10 +306,11 @@
 }
 
 .prevention-card {
-  background: #f8f9fa;
+  background: white;
   border-left: 4px solid #004B87;
   border-radius: 8px;
   padding: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .prevention-card.blockchain-card { border-left-color: #673AB7; }

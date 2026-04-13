@@ -1,274 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1EVY7T95ZC"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-1EVY7T95ZC');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="South African Government Tender Monitoring & Verification System">
-    <title>Tender Monitoring System</title>
-    <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="South African Government Tender Monitoring & Verification System — transparency, accountability, and efficiency in public procurement.">
+  <title>Home — Tender Monitoring System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <a href="index.html" class="header-img-link">
-            <img src="img/south-africa.png" alt="SA Flag" class="header-img">
-        </a>
-        <h1 class="header-title">Tender Monitoring &amp; Verification System</h1>
-        <div class="header-auth">
-            <div class="auth-links" id="authLinks">
-                <a href="login.html">Login</a>
-                <a href="register.html">Register</a>
-            </div>
-            <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
-        </div>
-    </header>
 
-    <!-- Navigation Bar -->
-    <nav aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="index.html" aria-current="page">Home</a>
-            <a href="tenders.html">Tenders</a>
-            <a href="investors.html">Investors</a>
-            <a href="government.html">Government</a>
-            <a href="news.html">News</a>
-            <a href="calculator.html">Calculator</a>
-            <a href="../admin/blockchain.html">Blockchain</a>
-            <div class="dropdown">
-                <button class="dropbtn" aria-haspopup="true">More ▼</button>
-                <div class="dropdown-content" role="menu">
-                    <a href="documents.html" role="menuitem">Download Tender Documents</a>
-                    <a href="scoring.html" role="menuitem">Tender Scoring System</a>
-                    <a href="verify.html" role="menuitem">Verify Project Reports</a>
-                    <a href="status.html" role="menuitem">Project Status Updates</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<div id="page-content">
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Transparency in Public Tenders</h1>
-            <p>Empowering contractors, investors, and governments to collaborate efficiently.</p>
-            <button onclick="window.location.href='tenders.html'">Explore Tenders</button>
-        </div>
-    </section>
-
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search for tenders..." aria-label="Search tenders">
-        <button onclick="searchTenders()">Search</button>
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🇿🇦 South African Government</div>
+      <h1>Transparency in Public Tenders</h1>
+      <p>Empowering contractors, investors, and government to collaborate efficiently through blockchain-verified procurement.</p>
+      <div class="hero-actions">
+        <a href="/tenders.html" class="hero-btn-primary">Explore Tenders</a>
+        <a href="/register.html" class="hero-btn-secondary">Get Started</a>
+      </div>
     </div>
+  </section>
 
-    <!-- Filter System -->
-    <div class="filter-section">
+  <!-- ── Stats bar ─────────────────────────────────────────── -->
+  <div class="stats-bar">
+    <div class="stat-item"><span class="stat-num" id="tendersAwarded">157</span><span class="stat-label">Tenders Awarded</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-num" id="projectsCompleted">89</span><span class="stat-label">Projects Completed</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-num" id="efficiencyScore">76%</span><span class="stat-label">Efficiency Score</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><span class="stat-num">R62bn</span><span class="stat-label">Fraud Prevented</span></div>
+  </div>
+
+  <!-- ── Search & Filter ───────────────────────────────────── -->
+  <section class="search-section">
+    <div class="search-inner">
+      <h2>Find a Tender</h2>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by title, location or category…" aria-label="Search tenders">
+        <button onclick="searchTenders()">Search</button>
+      </div>
+      <div class="filter-section">
         <select id="categoryFilter" aria-label="Filter by category">
-            <option value="all">All Categories</option>
-            <option value="construction">Construction</option>
-            <option value="it">IT Services</option>
-            <option value="healthcare">Healthcare</option>
-            <option value="energy">Energy</option>
+          <option value="all">All Categories</option>
+          <option value="construction">Construction</option>
+          <option value="it">IT Services</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="energy">Energy</option>
+          <option value="education">Education</option>
+          <option value="transport">Transport</option>
         </select>
         <input type="number" id="budgetFilter" placeholder="Max Budget (R)" aria-label="Maximum budget">
         <button onclick="filterTenders()">Apply Filters</button>
+      </div>
+      <div id="searchResultsPanel"></div>
     </div>
+  </section>
 
-    <!-- Real-Time News -->
-    <section class="news" id="news">
-        <h2>Latest News</h2>
-        <div id="newsContainer" class="news-container"></div>
-    </section>
-
-    <!-- Investment Opportunities -->
-    <section class="investments" id="investors">
-        <h2>Investment Opportunities</h2>
-        <div id="investmentContainer" class="investment-container"></div>
-    </section>
-
-    <!-- Blockchain Integration -->
-    <section class="blockchain">
-        <h2>Blockchain-Verified Tenders</h2>
-        <p>All tenders are verified and tracked using blockchain technology for transparency.</p>
-        <button onclick="window.location.href='../admin/blockchain.html'">View Blockchain</button>
-    </section>
-
-    <!-- Interactive Map -->
-    <section class="map-container">
-        <h2>Tender Locations</h2>
-        <div id="map" style="height: 400px; width: 100%;"></div>
-    </section>
-
-    <!-- Government Efficiency Dashboard -->
-    <section class="dashboard" id="government">
-        <h2>Government Efficiency Dashboard</h2>
-        <div class="dashboard-content">
-            <div class="metric">
-                <h3>Tenders Awarded</h3>
-                <p id="tendersAwarded">0</p>
-            </div>
-            <div class="metric">
-                <h3>Projects Completed</h3>
-                <p id="projectsCompleted">0</p>
-            </div>
-            <div class="metric">
-                <h3>Efficiency Score</h3>
-                <p id="efficiencyScore">0%</p>
-            </div>
+  <!-- ── Features ──────────────────────────────────────────── -->
+  <section class="features-section">
+    <div class="section-inner">
+      <h2 class="section-title">Why Use Our Platform?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>Blockchain Verified</h3>
+          <p>Every tender is hashed and stored on an immutable blockchain ledger, preventing tampering and fraud.</p>
         </div>
-    </section>
+        <div class="feature-card">
+          <div class="feature-icon">🗺️</div>
+          <h3>Real-Time Tracking</h3>
+          <p>Monitor project progress across all 9 provinces with live GPS tracking and milestone updates.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>AI Fraud Detection</h3>
+          <p>Machine learning algorithms detect bid rigging, price inflation, and ghost projects automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Transparent Scoring</h3>
+          <p>Standardised 10-point evaluation criteria ensure fair, objective tender assessments every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Gamification -->
-    <section class="gamification">
-        <h2>Earn Tokens</h2>
-        <p>Participate in tenders and contribute to the platform to earn tokens.</p>
-        <button onclick="claimTokens()">Claim Tokens</button>
-    </section>
+  <!-- ── Map ───────────────────────────────────────────────── -->
+  <section class="map-section">
+    <div class="section-inner">
+      <h2 class="section-title">Active Tender Locations</h2>
+      <p class="section-sub">Click any marker to view tender details</p>
+      <div id="map" class="map-box"></div>
+    </div>
+  </section>
 
-    <!-- Calculator Section -->
-    <section class="calculator">
-        <h2>Tender Cost Calculator</h2>
-        <p>Estimate the cost of your project before bidding.</p>
-        <input type="number" id="materialCost" placeholder="Material Cost (R)" aria-label="Material cost">
-        <input type="number" id="laborCost" placeholder="Labor Cost (R)" aria-label="Labor cost">
-        <input type="number" id="overhead" placeholder="Overhead Costs (R)" aria-label="Overhead costs">
-        <button onclick="calculateTender()">Calculate Total</button>
-        <h3 id="totalCost">Total Cost: R0</h3>
-    </section>
+  <!-- ── Latest News ───────────────────────────────────────── -->
+  <section class="news-section">
+    <div class="section-inner">
+      <div class="section-header-row">
+        <h2 class="section-title">Latest News</h2>
+        <a href="/news.html" class="view-all-link">View all →</a>
+      </div>
+      <div id="newsContainer" class="news-grid"></div>
+    </div>
+  </section>
 
-    <!-- Vision Section -->
-    <section class="vision">
-        <h2>Our Vision</h2>
-        <p>To create a transparent, efficient, and accountable tendering process in South Africa, ensuring the completion of public projects for economic growth and job creation.</p>
-        <img src="img/infrastructure.png" alt="Infrastructure Development" class="responsive-img">
-    </section>
+  <!-- ── Investment Opportunities ──────────────────────────── -->
+  <section class="invest-section">
+    <div class="section-inner">
+      <div class="section-header-row">
+        <h2 class="section-title">Investment Opportunities</h2>
+        <a href="/investors.html" class="view-all-link">View all →</a>
+      </div>
+      <div id="investmentContainer" class="invest-grid"></div>
+    </div>
+  </section>
 
-    <!-- Slideshow -->
-    <section class="slideshow-container">
-        <h2>Discover South Africa</h2>
+  <!-- ── Quick Calculator ──────────────────────────────────── -->
+  <section class="calc-section">
+    <div class="section-inner">
+      <div class="calc-card">
+        <div class="calc-info">
+          <h2>Quick Cost Estimator</h2>
+          <p>Get a rough estimate of your tender bid before submitting. Use our full calculator for detailed breakdowns.</p>
+          <a href="/calculator.html" class="calc-link">Full Calculator →</a>
+        </div>
+        <div class="calc-form">
+          <div class="calc-row">
+            <label>Material Cost (R)</label>
+            <input type="number" id="materialCost" placeholder="0.00" min="0">
+          </div>
+          <div class="calc-row">
+            <label>Labour Cost (R)</label>
+            <input type="number" id="laborCost" placeholder="0.00" min="0">
+          </div>
+          <div class="calc-row">
+            <label>Overhead (R)</label>
+            <input type="number" id="overhead" placeholder="0.00" min="0">
+          </div>
+          <button onclick="calculateTender()">Calculate Total</button>
+          <div id="totalCost" class="calc-result">Total Cost: R0.00</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Slideshow ─────────────────────────────────────────── -->
+  <section class="slideshow-section">
+    <div class="section-inner">
+      <h2 class="section-title">Discover South Africa</h2>
+      <div class="slideshow-wrapper">
         <div class="slideshow">
-            <img class="slide" src="img/pexels-jvdm-1524627.jpg" alt="Rhino">
-            <img class="slide" src="img/pexels-khanh-hoang-minh-2-77752098-19301629.jpg" alt="Community">
-            <img class="slide" src="img/pexels-magda-ehlers-pexels-3735461.jpg" alt="African Art">
-            <img class="slide" src="img/pexels-magda-ehlers-pexels-3814243.jpg" alt="Upside-down House">
-            <img class="slide" src="img/pexels-mikegles-30931569.jpg" alt="Cityscape">
+          <img class="slide" src="/assets/pexels-jvdm-1524627.jpg"                         alt="Rhino in the wild">
+          <img class="slide" src="/assets/pexels-khanh-hoang-minh-2-77752098-19301629.jpg" alt="Community">
+          <img class="slide" src="/assets/pexels-magda-ehlers-pexels-3735461.jpg"          alt="African Art">
+          <img class="slide" src="/assets/pexels-magda-ehlers-pexels-3814243.jpg"          alt="Architecture">
+          <img class="slide" src="/assets/pexels-mikegles-30931569.jpg"                    alt="Cityscape">
         </div>
-    </section>
+        <div class="slide-dots" id="slideDots"></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- About / Cost-Effective Section -->
-    <section class="about-system">
-        <div class="about-container">
-            <h2>Smart Spending, Maximum Impact</h2>
-            <div class="value-proposition">
-                <div class="value-card">
-                    <div class="value-icon">💰</div>
-                    <h3>Budget-Conscious Design</h3>
-                    <p>Built using open-source technologies and existing government infrastructure to keep costs 60-70% below market rates.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🔄</div>
-                    <h3>Phased Rollout</h3>
-                    <p>Starts with core functionality (R3.2M) then scales as needed, avoiding large upfront investments.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">📈</div>
-                    <h3>Proven ROI</h3>
-                    <p>Pilot projects show R4.20 saved for every R1 invested through reduced fraud and efficiency gains.</p>
-                </div>
-            </div>
-            <div class="budget-highlights">
-                <h3>Where Your Money Goes</h3>
-                <div class="budget-bar">
-                    <div class="bar-segment development" style="width: 45%"><span>Development (45%)</span></div>
-                    <div class="bar-segment training" style="width: 25%"><span>Training (25%)</span></div>
-                    <div class="bar-segment infrastructure" style="width: 20%"><span>Infrastructure (20%)</span></div>
-                    <div class="bar-segment contingency" style="width: 10%"><span>Contingency (10%)</span></div>
-                </div>
-                <div class="cost-comparison">
-                    <div class="comparison-item">
-                        <span class="label">Our System</span>
-                        <span class="amount">R7M</span>
-                        <span class="duration">(3 years)</span>
-                    </div>
-                    <div class="comparison-item commercial">
-                        <span class="label">Commercial Solutions</span>
-                        <span class="amount">R18-25M</span>
-                        <span class="duration">(3 years)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="sustainability">
-                <h3>Sustainable Operations</h3>
-                <ul>
-                    <li>Uses government's existing IT infrastructure</li>
-                    <li>Annual maintenance costs kept below R1.2M after launch</li>
-                    <li>Local university partnerships reduce training costs</li>
-                    <li>Open-source model avoids license fees</li>
-                </ul>
-                <button class="budget-download" onclick="downloadBudget()">Download Detailed Budget Plan</button>
-            </div>
+  <!-- ── About / Budget ────────────────────────────────────── -->
+  <section class="about-system">
+    <div class="about-container">
+      <h2>Smart Spending, Maximum Impact</h2>
+      <div class="value-proposition">
+        <div class="value-card">
+          <div class="value-icon">💰</div>
+          <h3>Budget-Conscious Design</h3>
+          <p>Built using open-source technologies to keep costs 60–70% below market rates.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Tender Monitoring System | Designed for Transparency and Growth</p>
-            <div class="social-media">
-                <a href="#" aria-label="Facebook"><img src="img/facebook.png" alt="Facebook"></a>
-                <a href="#" aria-label="Twitter"><img src="img/twitter.png" alt="Twitter"></a>
-                <a href="#" aria-label="LinkedIn"><img src="img/linkedin.png" alt="LinkedIn"></a>
-            </div>
+        <div class="value-card">
+          <div class="value-icon">🔄</div>
+          <h3>Phased Rollout</h3>
+          <p>Starts with core functionality (R3.2M) then scales as needed, avoiding large upfront investments.</p>
         </div>
-    </footer>
+        <div class="value-card">
+          <div class="value-icon">📈</div>
+          <h3>Proven ROI</h3>
+          <p>Pilot projects show R4.20 saved for every R1 invested through reduced fraud and efficiency gains.</p>
+        </div>
+      </div>
+      <div class="budget-highlights">
+        <h3>Where Your Money Goes</h3>
+        <div class="budget-bar">
+          <div class="bar-segment development"    style="width:45%"><span>Development (45%)</span></div>
+          <div class="bar-segment training"       style="width:25%"><span>Training (25%)</span></div>
+          <div class="bar-segment infrastructure" style="width:20%"><span>Infrastructure (20%)</span></div>
+          <div class="bar-segment contingency"    style="width:10%"><span>Contingency (10%)</span></div>
+        </div>
+        <div class="cost-comparison">
+          <div class="comparison-item">
+            <span class="label">Our System</span>
+            <span class="amount">R7M</span>
+            <span class="duration">(3 years)</span>
+          </div>
+          <div class="comparison-item commercial">
+            <span class="label">Commercial Solutions</span>
+            <span class="amount">R18–25M</span>
+            <span class="duration">(3 years)</span>
+          </div>
+        </div>
+      </div>
+      <div class="sustainability">
+        <h3>Sustainable Operations</h3>
+        <ul>
+          <li>Uses government's existing IT infrastructure</li>
+          <li>Annual maintenance costs kept below R1.2M after launch</li>
+          <li>Local university partnerships reduce training costs</li>
+          <li>Open-source model avoids license fees</li>
+        </ul>
+        <button class="budget-download" onclick="alert('Budget plan download coming soon.')">Download Detailed Budget Plan</button>
+      </div>
+    </div>
+  </section>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+  <!-- ── CTA ───────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2>Ready to Get Started?</h2>
+      <p>Join thousands of contractors, investors, and government officials already using the platform.</p>
+      <div class="cta-actions">
+        <a href="/register.html" class="cta-btn-primary">Create Free Account</a>
+        <a href="/tenders.html"  class="cta-btn-secondary">Browse Tenders</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Loading Spinner -->
-    <div class="spinner" id="loadingSpinner" role="status" aria-label="Loading"></div>
+</div><!-- #page-content -->
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="js/script.js"></script>
-    <script>
-        function checkAuthState() {
-            const token = localStorage.getItem('token');
-            const authLinks = document.getElementById('authLinks');
-            if (token) {
-                try {
-                    const payload = JSON.parse(atob(token.split('.')[1]));
-                    authLinks.innerHTML = `
-                        <span>Welcome, ${payload.user.name}</span>
-                        <a href="#" onclick="logout()">Logout</a>
-                        ${payload.user.role === 'government' ? '<a href="government.html">Dashboard</a>' : ''}
-                    `;
-                } catch (e) {
-                    logout();
-                }
-            }
-        }
-
-        function logout() {
-            localStorage.removeItem('token');
-            window.location.href = 'index.html';
-        }
-
-        function downloadBudget() {
-            alert('Budget plan download will be available soon.');
-        }
-
-        document.addEventListener('DOMContentLoaded', checkAuthState);
-    </script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>
