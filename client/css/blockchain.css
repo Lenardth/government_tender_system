@@ -1,0 +1,474 @@
+/* ── Blockchain / Anti-Corruption Dashboard ──────────────────── */
+/* Palette matches styles.css:
+   #004B87 primary  |  #002147 dark  |  #FFD700 gold  |  #f8f9fa bg */
+
+/* ── Page container ──────────────────────────────────────────── */
+.container {
+  max-width: 1400px;
+  margin: 28px auto;
+  padding: 0 20px;
+}
+
+/* ── Dashboard banner ────────────────────────────────────────── */
+.dashboard-header {
+  background: linear-gradient(135deg, #004B87, #002147);
+  color: white;
+  padding: 28px 32px;
+  border-radius: 10px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.dashboard-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.dashboard-header p {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* ── Two-column grid ─────────────────────────────────────────── */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ── Filters sidebar ─────────────────────────────────────────── */
+.filters-panel {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.filters-panel h3 {
+  color: #004B87;
+  margin: 0 0 16px;
+  font-size: 1rem;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #FFD700;
+}
+
+.filter-group {
+  margin-bottom: 14px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.filter-select,
+.filter-input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: white;
+  color: #333;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+  outline: none;
+  border-color: #004B87;
+}
+
+.apply-filters {
+  background: #004B87;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+  margin-right: 8px;
+}
+
+.apply-filters:hover { background: #002147; }
+
+.reset-filters {
+  background: #FFD700;
+  color: #004B87;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.reset-filters:hover { background: #e6c200; }
+
+/* ── Blockchain sidebar sections ─────────────────────────────── */
+.blockchain-section {
+  background: #f0f4f8;
+  border-left: 4px solid #004B87;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.blockchain-section h3 {
+  color: #004B87;
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.blockchain-section p {
+  font-size: 0.82rem;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.insider-protection {
+  background: #fff8f0;
+  border-left: 4px solid #FFD700;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.insider-protection h3 {
+  color: #004B87;
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.insider-protection p {
+  font-size: 0.82rem;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.blockchain-hash {
+  font-family: monospace;
+  background: #e8f0f8;
+  color: #002147;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 0.78rem;
+  word-break: break-all;
+  margin: 8px 0;
+}
+
+.blockchain-verify-btn {
+  background: #004B87;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.blockchain-verify-btn:hover { background: #002147; }
+
+/* ── Main content area ───────────────────────────────────────── */
+.content-area {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Dashboard cards ─────────────────────────────────────────── */
+.dashboard-card {
+  background: white;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.dashboard-card h2 {
+  color: #004B87;
+  font-size: 1.2rem;
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #FFD700;
+}
+
+/* ── Stats grid ──────────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  background: #f8f9fa;
+  border-top: 4px solid #004B87;
+  border-radius: 8px;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #004B87;
+  margin: 0 0 6px;
+}
+
+.stat-card p {
+  font-size: 0.82rem;
+  color: #666;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Map ─────────────────────────────────────────────────────── */
+#corruptionMap {
+  height: 380px;
+  border-radius: 8px;
+  border: 1px solid #e0e8f0;
+}
+
+.map-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.map-legend div { display: flex; align-items: center; gap: 6px; }
+
+.legend-critical  { display:inline-block; width:13px; height:13px; border-radius:50%; background:#e63946; }
+.legend-warning   { display:inline-block; width:13px; height:13px; border-radius:50%; background:#FFD700; }
+.legend-monitored { display:inline-block; width:13px; height:13px; border-radius:50%; background:#004B87; }
+.legend-blockchain{ display:inline-block; width:13px; height:13px; border-radius:50%; background:#673AB7; }
+
+/* ── Fraud / audit tables ────────────────────────────────────── */
+.fraud-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.fraud-table th {
+  background: #004B87;
+  color: white;
+  padding: 11px 14px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.fraud-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid #eee;
+  color: #444;
+}
+
+.fraud-table tr:hover td { background: #f8f9fa; }
+
+/* ── Status badges ───────────────────────────────────────────── */
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.status-critical   { background: #ffebee; color: #c62828; }
+.status-warning    { background: #fff8e1; color: #e65100; }
+.status-resolved   { background: #e8f5e9; color: #2e7d32; }
+.status-blockchain { background: #ede7f6; color: #4527a0; }
+
+/* ── Prevention cards ────────────────────────────────────────── */
+.prevention-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.prevention-card {
+  background: #f8f9fa;
+  border-left: 4px solid #004B87;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.prevention-card.blockchain-card { border-left-color: #673AB7; }
+
+.prevention-card h3 {
+  color: #004B87;
+  font-size: 0.95rem;
+  margin: 0 0 8px;
+}
+
+.prevention-card p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-indicator.active { background: #4CAF50; }
+
+/* ── Export button ───────────────────────────────────────────── */
+.export-btn {
+  background: #FFD700;
+  color: #004B87;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.export-btn:hover { background: #e6c200; }
+
+/* ── Pagination ──────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.pagination button {
+  background: #004B87;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: background 0.2s;
+}
+
+.pagination button:hover { background: #002147; }
+.pagination span { font-size: 0.88rem; color: #555; }
+
+/* ── View-details / verify buttons inside table ──────────────── */
+.view-details,
+.verify-action {
+  background: #004B87;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.view-details:hover,
+.verify-action:hover { background: #002147; }
+
+/* ── Modal ───────────────────────────────────────────────────── */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal[style*="block"] { display: flex !important; }
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 28px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content h2 {
+  color: #004B87;
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+}
+
+.close-modal {
+  float: right;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  transform: none;
+}
+
+.close-modal:hover { color: #333; transform: none; box-shadow: none; }
+
+/* ── Dark mode ───────────────────────────────────────────────── */
+.dark-mode .filters-panel,
+.dark-mode .dashboard-card,
+.dark-mode .stat-card,
+.dark-mode .prevention-card,
+.dark-mode .modal-content {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+.dark-mode .blockchain-section { background: #2a2a2a; }
+.dark-mode .insider-protection  { background: #2a2a2a; }
+.dark-mode .blockchain-hash     { background: #333; color: #ccc; }
+.dark-mode .filter-select,
+.dark-mode .filter-input        { background: #2d2d2d; color: #eee; border-color: #555; }
+.dark-mode .fraud-table td      { border-color: #333; color: #ccc; }
+.dark-mode .fraud-table tr:hover td { background: #2a2a2a; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .filters-panel  { order: 2; }
+}
+
+@media (max-width: 768px) {
+  .stats-grid      { grid-template-columns: 1fr 1fr; }
+  .prevention-grid { grid-template-columns: 1fr; }
+  .fraud-table     { display: block; overflow-x: auto; }
+  .dashboard-card  { padding: 16px; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+}

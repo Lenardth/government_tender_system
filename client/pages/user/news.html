@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - Tender Monitoring System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/news.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        <h1>Tender Monitoring & Verification System</h1>
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <nav>
+            <div class="nav-container">
+                <a href="../user">Home</a>
+                <a href="../user/">Tenders</a>
+                <a href="../user/investors.html">Investors</a>
+                <a href="../user/government.html">Government</a>
+                <a href="../user/news.html">News</a>
+                <a href="../user/calculator.html">Calculator</a>
+                <a href="../admin/blockchain.html">Blockchain</a> <!-- Add this line -->
+                <div class="dropdown">
+                    <button class="dropbtn">More ▼</button>
+                    <div class="dropdown-content">
+                        <a href="../user/documents.html">Download Tender Documents</a>
+                        <a href="../user/scoring.html">Tender 10-Point Scoring System</a>
+                        <a href="../user/verify.html">Verify Project Reports</a>
+                        <a href="../user/status.html">Project Status Updates</a>
+                        <a href="../admin/blockchain">Blockchain Verification</a> <!-- Also keep it here -->
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    <!-- News Content -->
+    <div class="news-page-container">
+        <h1>Latest News & Updates</h1>
+        
+        <div class="news-intro">
+            <p>Stay informed about the latest developments in public tenders, infrastructure projects, and government initiatives across South Africa.</p>
+        </div>
+        
+        <!-- Featured News -->
+        <div class="featured-news">
+            <div class="featured-news-card">
+                <img src="img/infrastructure.png" alt="Infrastructure Development" class="featured-img">
+                <div class="featured-content">
+                    <h2>Major Infrastructure Development Plan Announced</h2>
+                    <p class="news-date">March 30, 2025</p>
+                    <p>The South African government has unveiled a comprehensive R500 billion infrastructure development plan aimed at revitalizing key sectors of the economy and creating over 100,000 jobs in the next five years.</p>
+                    <p>The plan focuses on transportation networks, energy infrastructure, water management systems, and digital connectivity across both urban and rural areas.</p>
+                    <button onclick="readMore('infrastructure-plan')">Read More</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- News Categories -->
+        <div class="news-categories">
+            <button class="category-btn active" onclick="filterNews('all')">All News</button>
+            <button class="category-btn" onclick="filterNews('tenders')">Tender Announcements</button>
+            <button class="category-btn" onclick="filterNews('projects')">Project Updates</button>
+            <button class="category-btn" onclick="filterNews('policy')">Policy Changes</button>
+            <button class="category-btn" onclick="filterNews('events')">Events</button>
+        </div>
+        
+        <!-- News List -->
+        <div class="news-list" id="newsList">
+            <!-- News items will be loaded here by JavaScript -->
+        </div>
+        
+        <!-- Newsletter Signup -->
+        <div class="newsletter-signup">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter to receive the latest news and updates directly in your inbox.</p>
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" placeholder="Your Email Address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>© 2024 Tender Monitoring System | Designed for Transparency and Growth</p>
+            <div class="social-media">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load news data
+            loadNewsData();
+            
+            // Handle newsletter form submission
+            document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for subscribing to our newsletter!');
+                this.reset();
+            });
+        });
+
+        function loadNewsData() {
+            const newsItems = [
+                {
+                    title: 'Government Announces New Tender Transparency Initiative',
+                    date: 'March 28, 2025',
+                    content: 'The South African government has announced a new initiative to improve transparency in the tender process, leveraging blockchain technology for verification.',
+                    category: 'policy',
+                    image: 'img/hero-bg.jpg'
+                },
+                {
+                    title: 'Infrastructure Development Fund Increased by R10 Billion',
+                    date: 'March 25, 2025',
+                    content: 'The National Treasury has allocated an additional R10 billion to the Infrastructure Development Fund to accelerate key projects across the country.',
+                    category: 'projects',
+                    image: 'img/infrastructure.jpg'
+                },
+                {
+                    title: 'New Regulations for Tender Applications Coming in May',
+                    date: 'March 20, 2025',
+                    content: 'The Department of Public Works has announced new regulations for tender applications, aimed at reducing bureaucracy and speeding up the approval process.',
+                    category: 'policy',
+                    image: 'img/hero-bg.jpg'
+                },
+                {
+                    title: 'Tender Opened for Cape Town Water Infrastructure Project',
+                    date: 'March 18, 2025',
+                    content: 'The City of Cape Town has opened tenders for a R250 million water infrastructure upgrade project to improve water security in the region.',
+                    category: 'tenders',
+                    image: 'img/infrastructure.jpg'
+                },
+                {
+                    title: 'Annual Tender and Procurement Conference Announced',
+                    date: 'March 15, 2025',
+                    content: 'The 2025 South African Tender and Procurement Conference will be held in Johannesburg from May 12-14, bringing together government officials, contractors, and industry experts.',
+                    category: 'events',
+                    image: 'img/hero-bg.jpg'
+                },
+                {
+                    title: 'Durban Port Expansion Project Reaches 50% Completion',
+                    date: 'March 10, 2025',
+                    content: 'The R50 billion Durban Port expansion project has reached its halfway mark, with officials confirming it remains on schedule and within budget.',
+                    category: 'projects',
+                    image: 'img/infrastructure.jpg'
+                }
+            ];
+            
+            const newsList = document.getElementById('newsList');
+            newsItems.forEach(item => {
+                const newsCard = document.createElement('div');
+                newsCard.className = `news-card ${item.category}`;
+                newsCard.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="news-img">
+                    <div class="news-content">
+                        <h3>${item.title}</h3>
+                        <p class="news-date">${item.date}</p>
+                        <p>${item.content}</p>
+                        <button onclick="readMore('${item.title.replace(/\s+/g, '-').toLowerCase()}')">Read More</button>
+                    </div>
+                `;
+                newsList.appendChild(newsCard);
+            });
+        }
+
+        function filterNews(category) {
+            // Update active button
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter news items
+            const newsCards = document.querySelectorAll('.news-card');
+            newsCards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function readMore(articleId) {
+            alert(`In a real application, this would open the full article for "${articleId.replace(/-/g, ' ')}".`);
+        }
+    </script>
+</body>
+
+</html>

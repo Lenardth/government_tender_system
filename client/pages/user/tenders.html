@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenders — Tender Monitoring System</title>
+  <link rel="icon" href="/assets/icon.png">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/tenders.css">
+</head>
+<body>
+  <header>
+    <a href="/index.html" class="header-img-link">
+      <img src="/assets/south-africa.png" alt="SA Flag" class="header-img">
+    </a>
+    <h1 class="header-title">Tender Monitoring &amp; Verification System</h1>
+    <div class="header-auth">
+      <div id="authLinks"></div>
+      <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="/index.html">Home</a>
+      <a href="/tenders.html" aria-current="page">Tenders</a>
+      <a href="/investors.html">Investors</a>
+      <a href="/government.html">Government</a>
+      <a href="/news.html">News</a>
+      <a href="/calculator.html">Calculator</a>
+      <a href="/admin/blockchain.html">Blockchain</a>
+      <div class="dropdown">
+        <button class="dropbtn" aria-haspopup="true">More ▼</button>
+        <div class="dropdown-content" role="menu">
+          <a href="/documents.html"  role="menuitem">Download Documents</a>
+          <a href="/scoring.html"    role="menuitem">Scoring System</a>
+          <a href="/verify.html"     role="menuitem">Verify Reports</a>
+          <a href="/status.html"     role="menuitem">Project Status</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tenders-container">
+    <h1>Available Tenders</h1>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search tenders…" aria-label="Search tenders">
+      <button onclick="searchTenders()">Search</button>
+    </div>
+
+    <div class="filter-section">
+      <select id="categoryFilter" aria-label="Filter by category">
+        <option value="all">All Categories</option>
+        <option value="construction">Construction</option>
+        <option value="it">IT Services</option>
+        <option value="healthcare">Healthcare</option>
+        <option value="energy">Energy</option>
+        <option value="education">Education</option>
+        <option value="transport">Transport</option>
+      </select>
+      <input type="number" id="budgetFilter" placeholder="Max Budget (R)" aria-label="Max budget">
+      <button onclick="filterTenders()">Apply Filters</button>
+    </div>
+
+    <div id="tendersList" class="tenders-list"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Tender Monitoring System | Designed for Transparency and Growth</p>
+      <div class="social-media">
+        <a href="#" aria-label="Facebook"><img src="/assets/facebook.png" alt="Facebook"></a>
+        <a href="#" aria-label="Twitter"><img src="/assets/twitter.png" alt="Twitter"></a>
+        <a href="#" aria-label="LinkedIn"><img src="/assets/linkedin.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" onclick="scrollToTop()" aria-label="Back to top">↑</button>
+  <div class="spinner" id="loadingSpinner" aria-hidden="true"></div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/pages/user/tenders.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+
+/* Verification Page Styles */
+.verification-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    background-color: #f9f9f9;
+}
+
+.verification-tool, .how-it-works, .verification-stats {
+    margin-top: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.verification-tool h2,
+.how-it-works h2,
+.verification-stats h2 {
+    margin-bottom: 1rem;
+    color: #004B87;
+}
+
+.verification-options {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.verification-options .option {
+    flex: 1;
+}
+
+.verification-input-container {
+    margin-top: 1rem;
+}
+
+.verification-input {
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.verification-input.active {
+    display: flex;
+}
+
+.verification-input input[type="text"],
+.verification-input input[type="file"],
+.verification-input select {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.verification-input button {
+    padding: 0.75rem 1.5rem;
+    background: #004B87;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.verification-input button:hover {
+    background: #0060aa;
+}
+
+.verification-result {
+    margin-top: 2rem;
+}
+
+.result-success, .result-failure {
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.result-success {
+    background: #e6f7ec;
+    border-left: 6px solid #28a745;
+}
+
+.result-failure {
+    background: #fdecea;
+    border-left: 6px solid #dc3545;
+}
+
+.result-icon {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.result-success .result-icon {
+    color: #28a745;
+}
+
+.result-failure .result-icon {
+    color: #dc3545;
+}
+
+.result-details h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.result-details p, .result-details ul {
+    margin: 0.3rem 0;
+    color: #555;
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.step {
+    background: #f1f1f1;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.step-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #004B87;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2rem;
+    color: #004B87;
+    font-weight: bold;
+}
+
+.stat-label {
+    margin-top: 0.25rem;
+    color: #666;
+}

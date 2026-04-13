@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Tender Documents - Tender Monitoring System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/documents.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="img/south-africa.png" alt="SA Flag" class="header-img">
+        <h1>Tender Monitoring & Verification System</h1>
+        <button id="themeToggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Navigation Bar -->
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="../user">Home</a>
+            <a href="../user/">Tenders</a>
+            <a href="../user/investors.html">Investors</a>
+            <a href="../user/government.html">Government</a>
+            <a href="../user/news.html">News</a>
+            <a href="../user/calculator.html">Calculator</a>
+            <a href="../admin/blockchain.html">Blockchain</a> <!-- Add this line -->
+            <div class="dropdown">
+                <button class="dropbtn">More ▼</button>
+                <div class="dropdown-content">
+                    <a href="../user/documents.html">Download Tender Documents</a>
+                    <a href="../user/scoring.html">Tender 10-Point Scoring System</a>
+                    <a href="../user/verify.html">Verify Project Reports</a>
+                    <a href="../user/status.html">Project Status Updates</a>
+                    <a href="../admin/blockchain">Blockchain Verification</a> <!-- Also keep it here -->
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Documents Content -->
+    <div class="documents-container">
+        <h1>Download Tender Documents</h1>
+        
+        <div class="documents-intro">
+            <p>Access all the necessary documents for tender applications, project guidelines, and regulatory requirements.</p>
+        </div>
+        
+        <!-- Document Categories -->
+        <div class="document-categories">
+            <button class="category-btn active" onclick="filterDocuments('all')">All Documents</button>
+            <button class="category-btn" onclick="filterDocuments('application')">Application Forms</button>
+            <button class="category-btn" onclick="filterDocuments('guidelines')">Guidelines</button>
+            <button class="category-btn" onclick="filterDocuments('templates')">Templates</button>
+            <button class="category-btn" onclick="filterDocuments('regulations')">Regulations</button>
+        </div>
+        
+        <!-- Documents List -->
+        <div class="documents-list" id="documentsList">
+            <!-- Documents will be loaded here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>© 2024 Tender Monitoring System | Designed for Transparency and Growth</p>
+            <div class="social-media">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load documents data
+            loadDocumentsData();
+        });
+
+        function loadDocumentsData() {
+            const documents = [
+                {
+                    title: 'Standard Tender Application Form',
+                    description: 'Official application form for all government tenders.',
+                    fileSize: '245 KB',
+                    fileType: 'PDF',
+                    lastUpdated: 'March 15, 2025',
+                    category: 'application'
+                },
+                {
+                    title: 'Tender Submission Guidelines',
+                    description: 'Comprehensive guidelines for preparing and submitting tender applications.',
+                    fileSize: '1.2 MB',
+                    fileType: 'PDF',
+                    lastUpdated: 'February 28, 2025',
+                    category: 'guidelines'
+                },
+                {
+                    title: 'Project Budget Template',
+                    description: 'Excel template for preparing detailed project budgets.',
+                    fileSize: '380 KB',
+                    fileType: 'XLSX',
+                    lastUpdated: 'March 10, 2025',
+                    category: 'templates'
+                },
+                {
+                    title: 'Tender Regulations 2025',
+                    description: 'Official government regulations governing the tender process.',
+                    fileSize: '3.5 MB',
+                    fileType: 'PDF',
+                    lastUpdated: 'January 5, 2025',
+                    category: 'regulations'
+                },
+                {
+                    title: 'Company Profile Template',
+                    description: 'Template for preparing company profiles for tender submissions.',
+                    fileSize: '420 KB',
+                    fileType: 'DOCX',
+                    lastUpdated: 'March 5, 2025',
+                    category: 'templates'
+                },
+                {
+                    title: 'BEE Certification Requirements',
+                    description: 'Guidelines for BEE certification requirements for tender applications.',
+                    fileSize: '850 KB',
+                    fileType: 'PDF',
+                    lastUpdated: 'February 15, 2025',
+                    category: 'guidelines'
+                },
+                {
+                    title: 'Tax Compliance Declaration Form',
+                    description: 'Required form for declaring tax compliance status.',
+                    fileSize: '180 KB',
+                    fileType: 'PDF',
+                    lastUpdated: 'March 20, 2025',
+                    category: 'application'
+                },
+                {
+                    title: 'Environmental Impact Assessment Template',
+                    description: 'Template for preparing environmental impact assessments for construction projects.',
+                    fileSize: '1.8 MB',
+                    fileType: 'DOCX',
+                    lastUpdated: 'February 10, 2025',
+                    category: 'templates'
+                }
+            ];
+            
+            const documentsList = document.getElementById('documentsList');
+            documents.forEach(doc => {
+                const documentCard = document.createElement('div');
+                documentCard.className = `document-card ${doc.category}`;
+                documentCard.innerHTML = `
+                    <div class="document-icon ${doc.fileType.toLowerCase()}"></div>
+                    <div class="document-details">
+                        <h3>${doc.title}</h3>
+                        <p>${doc.description}</p>
+                        <div class="document-meta">
+                            <span>File type: ${doc.fileType}</span>
+                            <span>Size: ${doc.fileSize}</span>
+                            <span>Updated: ${doc.lastUpdated}</span>
+                        </div>
+                        <button onclick="downloadDocument('${doc.title}')">Download</button>
+                    </div>
+                `;
+                documentsList.appendChild(documentCard);
+            });
+        }
+
+        function filterDocuments(category) {
+            // Update active button
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter documents
+            const documentCards = document.querySelectorAll('.document-card');
+            documentCards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function downloadDocument(title) {
+            // In a real application, this would initiate a file download
+            alert(`Downloading "${title}". In a real application, this would start the file download.`);
+        }
+    </script>
+</body>
+
+</html>
